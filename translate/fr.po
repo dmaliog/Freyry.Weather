@@ -1,275 +1,334 @@
-# Translation of plasma Freyry in LANGUAGE
+# Translation of plasma Freyry in French
 # Copyright (C) 2025
 # This file is distributed under the same license as the plasma flex hub package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Freyry Weather\n"
-"Report-Msgid-Bugs-To: https://github.com/zayronxio/Freyry.Weather/\n"
-"POT-Creation-Date: 2025-12-08 00:00-0000\n"
-"PO-Revision-Date: 2025\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
-```
 #: ../contents/config/config.qml
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: ../contents/config/config.qml
 msgid "Weather Settings"
-msgstr ""
+msgstr "Paramètres météo"
 
 #: ../contents/ui/js/utilities.js
 msgid "Clear"
-msgstr ""
+msgstr "Dégagé"
 
 #: ../contents/ui/js/utilities.js
 msgid "Mainly clear"
-msgstr ""
+msgstr "Principalement dégagé"
 
 #: ../contents/ui/js/utilities.js
 msgid "Partly cloudy"
-msgstr ""
+msgstr "Partiellement nuageux"
 
 #: ../contents/ui/js/utilities.js
 msgid "Overcast"
-msgstr ""
+msgstr "Couvert"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle light intensity"
-msgstr ""
+msgstr "Bruine légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle moderate intensity"
-msgstr ""
+msgstr "Bruine modérée"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle dense intensity"
-msgstr ""
+msgstr "Bruine forte"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle light intensity"
-msgstr ""
+msgstr "Bruine verglaçante légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle dense intensity"
-msgstr ""
+msgstr "Bruine verglaçante forte"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain slight intensity"
-msgstr ""
+msgstr "Pluie légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain moderate intensity"
-msgstr ""
+msgstr "Pluie modérée"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain heavy intensity"
-msgstr ""
+msgstr "Pluie forte"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain light intensity"
-msgstr ""
+msgstr "Pluie verglaçante légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain heavy intensity"
-msgstr ""
+msgstr "Pluie verglaçante forte"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall slight intensity"
-msgstr ""
+msgstr "Neige légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall moderate intensity"
-msgstr ""
+msgstr "Neige modérée"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall heavy intensity"
-msgstr ""
+msgstr "Neige forte"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow grains"
-msgstr ""
+msgstr "Grains de neige"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers slight"
-msgstr ""
+msgstr "Averses légères"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers moderate"
-msgstr ""
+msgstr "Averses modérées"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers violent"
-msgstr ""
+msgstr "Averses violentes"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers slight"
-msgstr ""
+msgstr "Averses de neige légères"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers heavy"
-msgstr ""
+msgstr "Averses de neige fortes"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm"
-msgstr ""
+msgstr "Orage"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm with slight hail"
-msgstr ""
+msgstr "Orage avec grêle légère"
 
 #: ../contents/ui/js/utilities.js
 msgid "Cloudy"
-msgstr ""
+msgstr "Nuageux"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle"
-msgstr ""
+msgstr "Bruine"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow"
-msgstr ""
+msgstr "Neige"
 
 #: ../contents/ui/js/utilities.js
 msgid "Hail"
-msgstr ""
+msgstr "Grêle"
 
 #: ../contents/ui/js/utilities.js
 msgid "Showers"
-msgstr ""
+msgstr "Averses"
 
 #: ../contents/ui/js/utilities.js
 msgid "Storm"
-msgstr ""
+msgstr "Tempête"
 
 #: ../contents/ui/js/utilities.js
 msgid "Low"
-msgstr ""
+msgstr "Faible"
 
 #: ../contents/ui/js/utilities.js
 msgid "Moderate"
-msgstr ""
+msgstr "Modéré"
 
 #: ../contents/ui/js/utilities.js
 msgid "High"
-msgstr ""
+msgstr "Élevé"
 
 #: ../contents/ui/js/utilities.js
 msgid "Very High"
-msgstr ""
+msgstr "Très élevé"
 
 #: ../contents/ui/js/utilities.js
 msgid "Extreme"
-msgstr ""
+msgstr "Extrême"
 
 #: ../contents/ui/MainView.qml
 msgid "Feels like"
-msgstr ""
+msgstr "Ressenti"
 
 #: ../contents/ui/MainView.qml
 msgid "Wind"
-msgstr ""
+msgstr "Vent"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunrise"
-msgstr ""
+msgstr "Lever du soleil"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunset"
-msgstr ""
+msgstr "Coucher du soleil"
 
 #: ../contents/ui/MainView.qml
 msgid "Cloudiness"
-msgstr ""
+msgstr "Nébulosité"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Panel Size:"
-msgstr ""
+msgstr "Taille de police du panneau:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Only Icon Weather"
-msgstr ""
+msgstr "Icône météo uniquement"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show temperature weather"
-msgstr ""
+msgstr "Afficher la température"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show weather conditions"
-msgstr ""
+msgstr "Afficher les conditions météo"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Bold"
-msgstr ""
+msgstr "Police en gras"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "12-hour (AM/PM)"
-msgstr ""
+msgstr "12 heures (AM/PM)"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
-msgstr ""
+msgstr "Unité de vent:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Temperature Unit:"
-msgstr ""
+msgstr "Unité de température:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Weather Metrics"
-msgstr ""
+msgstr "Métriques météo"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Speed"
-msgstr ""
+msgstr "Vitesse du vent"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Feels Like"
-msgstr ""
+msgstr "Ressenti"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "UV Level"
-msgstr ""
+msgstr "Niveau UV"
+
+#: ../contents/ui/MainView.qml
+msgid "UV"
+msgstr "UV"
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "pm"
+msgstr "pm"
+
+#: ../contents/ui/WeatherConfig.qml
+#: ../contents/ui/Header.qml
+msgid "unknown"
+msgstr "inconnu"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Humidity"
-msgstr ""
+msgstr "Humidité"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Rain"
-msgstr ""
+msgstr "Pluie"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
-msgstr ""
+msgstr "Max/Min"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
-msgstr ""
+msgstr "Lever / Coucher du soleil"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
-msgstr ""
+msgstr "Couverture nuageuse"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Search Coordinates"
-msgstr ""
+msgstr "Rechercher les coordonnées"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Use Location of your ip"
-msgstr ""
+msgstr "Utiliser la localisation de votre IP"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Latitude"
-msgstr ""
+msgstr "Latitude"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Longitude"
-msgstr ""
+msgstr "Longitude"
+
+#: ../contents/ui/FindCity.qml
+msgid "Search location..."
+msgstr "Rechercher un lieu..."
+
+#: ../contents/ui/FindCity.qml
+msgid "Search for Location"
+msgstr "Rechercher un lieu"
+
+#: ../contents/ui/FindCity.qml
+msgid "Enter the name of a city or location to find its coordinates"
+msgstr "Entrez le nom d'une ville ou d'un lieu pour trouver ses coordonnées"
+
+#: ../contents/ui/FindCity.qml
+msgid "No locations found"
+msgstr "Aucun lieu trouvé"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Font Settings"
+msgstr "Paramètres de police"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Display Options"
+msgstr "Options d'affichage"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Time Format"
+msgstr "Format de l'heure"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Location"
+msgstr "Lieu"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Units"
+msgstr "Unités"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "km/h"
+msgstr "km/h"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "mph"
+msgstr "mph"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "m/s"
+msgstr "m/s"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+

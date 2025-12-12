@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import org.kde.plasma.plasmoid
 import org.kde.kirigami as Kirigami
 
@@ -30,15 +31,30 @@ Item {
         onReady: {
             console.log("se esta ejecutando", findCity.cityPhoton)
             ubication.textUbication = findCity.cityPhoton
-            coordinates.updateRecent = true
-            console.log(coordinates.updateRecent, "gggggg", ubication.textUbication)
             coordinates.latitude = findCity.selectedLatitude
             coordinates.longitude = findCity.selectedLongitude
+            coordinates.updateRecent = true
+            console.log(coordinates.updateRecent, "gggggg", ubication.textUbication)
+            Plasmoid.configurationChanged()
         }
     }
 
-    property var windUnits: ["km/h","mph", "m/s"]
-    property var temperatureUnits: ["Celsius","Fahrenheit"]
+    ListModel {
+        id: windUnitsModel
+        Component.onCompleted: {
+            append({ value: "km/h", translated: i18n("km/h") })
+            append({ value: "mph", translated: i18n("mph") })
+            append({ value: "m/s", translated: i18n("m/s") })
+        }
+    }
+
+    ListModel {
+        id: temperatureUnitsModel
+        Component.onCompleted: {
+            append({ value: "Celsius", translated: i18n("Celsius") })
+            append({ value: "Fahrenheit", translated: i18n("Fahrenheit") })
+        }
+    }
 
     property alias cfg_windUnit: units.wind
     property alias cfg_temperatureUnit: units.temperatureUnit
@@ -52,15 +68,12 @@ Item {
     QtObject {
         id: metricsLayout
 
-        // modelo observable
         property alias allMetrics: allMetrics
         property int currentSelected: 0
         property int maxSelected: 6
 
-        // esta lista se rellena con los nombres de seleccionados
         property var selectedMetricNames: []
 
-        // inicializar desde cfg_selectedMetrics
         Component.onCompleted: {
             for (var i = 0; i < allMetrics.count; i++) {
                 if (metricsLayout.selectedMetricNames.indexOf(allMetrics.get(i).name) !== -1) {
@@ -71,7 +84,6 @@ Item {
         }
     }
 
-    // Modelo reactivo
     ListModel {
         id: allMetrics
         ListElement { name: "Wind Speed"; selected: false }
@@ -97,101 +109,214 @@ Item {
     ScrollView {
         id: scrollView
         anchors.fill: parent
-        clip: true // asegura que el contenido no se salga
+        clip: true
 
-        Kirigami.FormLayout {
+        ColumnLayout {
             width: scrollView.width
-            //spacing: Kirigami.Units.smallSpacing
+            spacing: Kirigami.Units.largeSpacing
 
-            CheckBox {
-                id: ipLocation
-                Kirigami.FormData.label: i18n("Use Location of your ip")
-                onCheckedChanged: {
-                    if (checked) {
-                        coordinates.latitude = 0
-                        coordinates.longitude = 0
-                    }
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 5
+                    Layout.rightMargin: 5
+                    Layout.topMargin: 8
+                    Layout.bottomMargin: 5
+                    level: 4
+                    text: i18n("Location")
+                    color: Kirigami.Theme.textColor
+                    font.weight: Font.DemiBold
                 }
-            }
 
-            Item { Kirigami.FormData.isSection: true }
-
-            Button {
-                text: i18n("Search Coordinates")
-                enabled: !ipLocation.checked
-                onClicked: findCity.open()
-            }
-
-            TextField {
-                Kirigami.FormData.label: i18n("Latitude")
-                text: coordinates.latitude === 0 ? "unknown" : coordinates.latitude
-                enabled: false
-                visible: !ipLocation.checked
-            }
-
-            TextField {
-                Kirigami.FormData.label: i18n("Longitude")
-                text: coordinates.longitude === 0 ? "unknown" : coordinates.longitude
-                enabled: false
-                visible: !ipLocation.checked
-            }
-
-            Item { Kirigami.FormData.isSection: true }
-
-            ComboBox {
-                id: windUnitBox
-                Kirigami.FormData.label: i18n("Wind Unit:")
-                model: windUnits
-                onActivated: units.wind = currentValue
-                Component.onCompleted: {
-                    var idx = windUnits.indexOf(units.wind)
-                    currentIndex = idx >= 0 ? idx : 0
+                Kirigami.Separator {
+                    Layout.fillWidth: true
                 }
-            }
 
-            ComboBox {
-                id: unitsBox
-                Kirigami.FormData.label: i18n("Temperature Unit:")
-                model: temperatureUnits
-                onActivated: units.temperatureUnit = currentValue
-                Component.onCompleted: {
-                    var idx = temperatureUnits.indexOf(units.temperatureUnit)
-                    currentIndex = idx >= 0 ? idx : 0
-                }
-            }
+                Kirigami.FormLayout {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
 
-            Item { Kirigami.FormData.isSection: true }
-            Item { Kirigami.FormData.isSection: true }
-
-            Kirigami.Heading {
-                width: parent.width
-                font.weight: Font.DemiBold
-                text: i18n("Weather Metrics")
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Kirigami.Theme.textColor
-                level: 4
-            }
-
-            Repeater {
-                model: allMetrics
-                CheckBox {
-                    checked: model.selected
-                    Kirigami.FormData.label: i18n(model.name)
-                    onClicked: {
-                        if (checked) {
-                            if (metricsLayout.currentSelected < metricsLayout.maxSelected) {
-                                metricsLayout.currentSelected++
-                                allMetrics.setProperty(index, "selected", true)
-                            } else {
-                                checked = false
+                    CheckBox {
+                        id: ipLocation
+                        Kirigami.FormData.label: i18n("Use Location of your ip")
+                        onCheckedChanged: {
+                            if (checked) {
+                                coordinates.latitude = 0
+                                coordinates.longitude = 0
                             }
-                        } else {
-                            metricsLayout.currentSelected--
-                            allMetrics.setProperty(index, "selected", false)
                         }
-                        metricsUpdated()
+                    }
+
+                    Button {
+                        Layout.fillWidth: true
+                        text: i18n("Search Coordinates")
+                        enabled: !ipLocation.checked
+                        onClicked: findCity.open()
+                    }
+
+                    TextField {
+                        Kirigami.FormData.label: i18n("Latitude")
+                        text: coordinates.latitude === 0 ? i18n("unknown") : coordinates.latitude
+                        enabled: false
+                        visible: !ipLocation.checked
+                    }
+
+                    TextField {
+                        Kirigami.FormData.label: i18n("Longitude")
+                        text: coordinates.longitude === 0 ? i18n("unknown") : coordinates.longitude
+                        enabled: false
+                        visible: !ipLocation.checked
                     }
                 }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 5
+                    Layout.rightMargin: 5
+                    Layout.topMargin: 8
+                    Layout.bottomMargin: 5
+                    level: 4
+                    text: i18n("Units")
+                    color: Kirigami.Theme.textColor
+                    font.weight: Font.DemiBold
+                }
+
+                Kirigami.Separator {
+                    Layout.fillWidth: true
+                }
+
+                Kirigami.FormLayout {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
+
+                    ComboBox {
+                        id: windUnitBox
+                        Kirigami.FormData.label: i18n("Wind Unit:")
+                        textRole: "translated"
+                        valueRole: "value"
+                        model: windUnitsModel
+                        onActivated: {
+                            units.wind = windUnitsModel.get(currentIndex).value
+                        }
+                        function updateCurrentIndex() {
+                            if (windUnitsModel.count === 0) return
+                            for (var i = 0; i < windUnitsModel.count; i++) {
+                                if (windUnitsModel.get(i).value === units.wind) {
+                                    currentIndex = i
+                                    return
+                                }
+                            }
+                            currentIndex = 0
+                        }
+                        Component.onCompleted: {
+                            Qt.callLater(function() {
+                                updateCurrentIndex()
+                            })
+                        }
+                    }
+                    Connections {
+                        target: windUnitsModel
+                        function onCountChanged() {
+                            if (windUnitsModel.count > 0) {
+                                windUnitBox.updateCurrentIndex()
+                            }
+                        }
+                    }
+
+                    ComboBox {
+                        id: unitsBox
+                        Kirigami.FormData.label: i18n("Temperature Unit:")
+                        textRole: "translated"
+                        valueRole: "value"
+                        model: temperatureUnitsModel
+                        onActivated: {
+                            units.temperatureUnit = temperatureUnitsModel.get(currentIndex).value
+                        }
+                        function updateCurrentIndex() {
+                            if (temperatureUnitsModel.count === 0) return
+                            for (var i = 0; i < temperatureUnitsModel.count; i++) {
+                                if (temperatureUnitsModel.get(i).value === units.temperatureUnit) {
+                                    currentIndex = i
+                                    return
+                                }
+                            }
+                            currentIndex = 0
+                        }
+                        Component.onCompleted: {
+                            Qt.callLater(function() {
+                                updateCurrentIndex()
+                            })
+                        }
+                    }
+                    Connections {
+                        target: temperatureUnitsModel
+                        function onCountChanged() {
+                            if (temperatureUnitsModel.count > 0) {
+                                unitsBox.updateCurrentIndex()
+                            }
+                        }
+                    }
+                }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 5
+                    Layout.rightMargin: 5
+                    Layout.topMargin: 8
+                    Layout.bottomMargin: 5
+                    level: 4
+                    text: i18n("Weather Metrics")
+                    color: Kirigami.Theme.textColor
+                    font.weight: Font.DemiBold
+                }
+
+                Kirigami.Separator {
+                    Layout.fillWidth: true
+                }
+
+                Kirigami.FormLayout {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
+
+                    Repeater {
+                        model: allMetrics
+                        CheckBox {
+                            checked: model.selected
+                            Kirigami.FormData.label: i18n(model.name)
+                            onClicked: {
+                                if (checked) {
+                                    if (metricsLayout.currentSelected < metricsLayout.maxSelected) {
+                                        metricsLayout.currentSelected++
+                                        allMetrics.setProperty(index, "selected", true)
+                                    } else {
+                                        checked = false
+                                    }
+                                } else {
+                                    metricsLayout.currentSelected--
+                                    allMetrics.setProperty(index, "selected", false)
+                                }
+                                metricsUpdated()
+                            }
+                        }
+                    }
+                }
+            }
+
+            Item {
+                Layout.fillHeight: true
             }
         }
     }

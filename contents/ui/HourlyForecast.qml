@@ -59,10 +59,10 @@ Item {
                        }
 
                    }
-                   Rectangle {
-                       anchors.right: parent.right
-                       anchors.rightMargin: -parent.parent.spacing / 2  // Esto no es exacto, porque el spacing es entre items, y el rectángulo está dentro del item.
-                       width: 1
+                    Rectangle {
+                        anchors.right: parent.right
+                        anchors.rightMargin: -parent.parent.spacing / 2
+                        width: 1
                        height: parent.height * 0.4
                        anchors.verticalCenter: parent.verticalCenter
                        color: Kirigami.Theme.textColor
@@ -73,11 +73,22 @@ Item {
            }
        }
     }
+    function formatTimeWithCustomAMPM(dateTime, format) {
+        var formatted = Qt.formatDateTime(dateTime, format);
+        formatted = formatted.replace(/\bPM\b/g, function(match) {
+            return i18n("pm")
+        });
+        formatted = formatted.replace(/\bpm\b/g, function(match) {
+            return i18n("pm")
+        });
+        return formatted;
+    }
+
     function updateDatesWeather(){
         var newArrayWeatherHourlyForecast = []
         timesDatesForecast = weatherData.hourlyTimes.map(function(iso) {
             var dateTime = new Date(iso)
-            return Qt.formatDateTime(dateTime, prefixHoursFormatt)
+            return formatTimeWithCustomAMPM(dateTime, prefixHoursFormatt)
         })
         iconsHourlyForecast = weatherData.iconsHourlyWeather
         for (var e = 0; e < weatherData.hourlyWeather.length; e++) {

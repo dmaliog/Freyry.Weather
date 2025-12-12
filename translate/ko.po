@@ -1,275 +1,334 @@
-# Translation of plasma Freyry in LANGUAGE
+# Translation of plasma Freyry in Korean
 # Copyright (C) 2025
 # This file is distributed under the same license as the plasma flex hub package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Freyry Weather\n"
-"Report-Msgid-Bugs-To: https://github.com/zayronxio/Freyry.Weather/\n"
-"POT-Creation-Date: 2025-12-08 00:00-0000\n"
-"PO-Revision-Date: 2025\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
-```
 #: ../contents/config/config.qml
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: ../contents/config/config.qml
 msgid "Weather Settings"
-msgstr ""
+msgstr "날씨 설정"
 
 #: ../contents/ui/js/utilities.js
 msgid "Clear"
-msgstr ""
+msgstr "맑음"
 
 #: ../contents/ui/js/utilities.js
 msgid "Mainly clear"
-msgstr ""
+msgstr "대체로 맑음"
 
 #: ../contents/ui/js/utilities.js
 msgid "Partly cloudy"
-msgstr ""
+msgstr "부분 흐림"
 
 #: ../contents/ui/js/utilities.js
 msgid "Overcast"
-msgstr ""
+msgstr "흐림"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle light intensity"
-msgstr ""
+msgstr "약한 이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle moderate intensity"
-msgstr ""
+msgstr "보통 이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle dense intensity"
-msgstr ""
+msgstr "강한 이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle light intensity"
-msgstr ""
+msgstr "약한 동결 이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle dense intensity"
-msgstr ""
+msgstr "강한 동결 이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain slight intensity"
-msgstr ""
+msgstr "약한 비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain moderate intensity"
-msgstr ""
+msgstr "보통 비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain heavy intensity"
-msgstr ""
+msgstr "강한 비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain light intensity"
-msgstr ""
+msgstr "약한 동결 비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain heavy intensity"
-msgstr ""
+msgstr "강한 동결 비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall slight intensity"
-msgstr ""
+msgstr "약한 눈"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall moderate intensity"
-msgstr ""
+msgstr "보통 눈"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall heavy intensity"
-msgstr ""
+msgstr "강한 눈"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow grains"
-msgstr ""
+msgstr "눈알"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers slight"
-msgstr ""
+msgstr "약한 소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers moderate"
-msgstr ""
+msgstr "보통 소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers violent"
-msgstr ""
+msgstr "강한 소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers slight"
-msgstr ""
+msgstr "약한 눈 소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers heavy"
-msgstr ""
+msgstr "강한 눈 소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm"
-msgstr ""
+msgstr "뇌우"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm with slight hail"
-msgstr ""
+msgstr "약한 우박이 있는 뇌우"
 
 #: ../contents/ui/js/utilities.js
 msgid "Cloudy"
-msgstr ""
+msgstr "흐림"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle"
-msgstr ""
+msgstr "이슬비"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow"
-msgstr ""
+msgstr "눈"
 
 #: ../contents/ui/js/utilities.js
 msgid "Hail"
-msgstr ""
+msgstr "우박"
 
 #: ../contents/ui/js/utilities.js
 msgid "Showers"
-msgstr ""
+msgstr "소나기"
 
 #: ../contents/ui/js/utilities.js
 msgid "Storm"
-msgstr ""
+msgstr "폭풍"
 
 #: ../contents/ui/js/utilities.js
 msgid "Low"
-msgstr ""
+msgstr "낮음"
 
 #: ../contents/ui/js/utilities.js
 msgid "Moderate"
-msgstr ""
+msgstr "보통"
 
 #: ../contents/ui/js/utilities.js
 msgid "High"
-msgstr ""
+msgstr "높음"
 
 #: ../contents/ui/js/utilities.js
 msgid "Very High"
-msgstr ""
+msgstr "매우 높음"
 
 #: ../contents/ui/js/utilities.js
 msgid "Extreme"
-msgstr ""
+msgstr "극도"
 
 #: ../contents/ui/MainView.qml
 msgid "Feels like"
-msgstr ""
+msgstr "체감 온도"
 
 #: ../contents/ui/MainView.qml
 msgid "Wind"
-msgstr ""
+msgstr "바람"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunrise"
-msgstr ""
+msgstr "일출"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunset"
-msgstr ""
+msgstr "일몰"
 
 #: ../contents/ui/MainView.qml
 msgid "Cloudiness"
-msgstr ""
+msgstr "흐림"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Panel Size:"
-msgstr ""
+msgstr "패널 글꼴 크기:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Only Icon Weather"
-msgstr ""
+msgstr "날씨 아이콘만"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show temperature weather"
-msgstr ""
+msgstr "온도 표시"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show weather conditions"
-msgstr ""
+msgstr "날씨 조건 표시"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Bold"
-msgstr ""
+msgstr "굵은 글꼴"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "12-hour (AM/PM)"
-msgstr ""
+msgstr "12시간제 (AM/PM)"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
-msgstr ""
+msgstr "바람 단위:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Temperature Unit:"
-msgstr ""
+msgstr "온도 단위:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Weather Metrics"
-msgstr ""
+msgstr "날씨 지표"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Speed"
-msgstr ""
+msgstr "풍속"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Feels Like"
-msgstr ""
+msgstr "체감 온도"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "UV Level"
-msgstr ""
+msgstr "UV 지수"
+
+#: ../contents/ui/MainView.qml
+msgid "UV"
+msgstr "UV"
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "pm"
+msgstr "오후"
+
+#: ../contents/ui/WeatherConfig.qml
+#: ../contents/ui/Header.qml
+msgid "unknown"
+msgstr "알 수 없음"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Humidity"
-msgstr ""
+msgstr "습도"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Rain"
-msgstr ""
+msgstr "비"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
-msgstr ""
+msgstr "최대/최소"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
-msgstr ""
+msgstr "일출 / 일몰"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
-msgstr ""
+msgstr "구름 덮개"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Search Coordinates"
-msgstr ""
+msgstr "좌표 검색"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Use Location of your ip"
-msgstr ""
+msgstr "IP 위치 사용"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Latitude"
-msgstr ""
+msgstr "위도"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Longitude"
-msgstr ""
+msgstr "경도"
+
+#: ../contents/ui/FindCity.qml
+msgid "Search location..."
+msgstr "위치 검색..."
+
+#: ../contents/ui/FindCity.qml
+msgid "Search for Location"
+msgstr "위치 검색"
+
+#: ../contents/ui/FindCity.qml
+msgid "Enter the name of a city or location to find its coordinates"
+msgstr "좌표를 찾으려면 도시 또는 위치 이름을 입력하세요"
+
+#: ../contents/ui/FindCity.qml
+msgid "No locations found"
+msgstr "위치를 찾을 수 없습니다"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Font Settings"
+msgstr "글꼴 설정"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Display Options"
+msgstr "표시 옵션"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Time Format"
+msgstr "시간 형식"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Location"
+msgstr "위치"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Units"
+msgstr "단위"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "km/h"
+msgstr "km/h"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "mph"
+msgstr "mph"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "m/s"
+msgstr "m/s"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Celsius"
+msgstr "섭씨"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Fahrenheit"
+msgstr "화씨"
+

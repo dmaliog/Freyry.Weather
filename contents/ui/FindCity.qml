@@ -5,8 +5,9 @@ import org.kde.kirigami as Kirigami
 
 Kirigami.Dialog {
     id: dialog
-    width: 400
-    height: Kirigami.Units.gridUnit*6
+    title: i18n("Search Coordinates")
+    width: 450
+    height: Kirigami.Units.gridUnit * 6
 
     property double selectedLatitude: 0
     property double selectedLongitude: 0
@@ -15,35 +16,74 @@ Kirigami.Dialog {
 
     signal ready
 
-    ColumnLayout {
+    Rectangle {
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.topMargin: headerItem ? headerItem.height : Kirigami.Units.gridUnit * 2.5
+        height: 1
+        color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, 0.2)
+    }
+
+    Column {
+        id: contentColumn
         anchors.fill: parent
-        spacing: 8
+        anchors.margins: 5
+        spacing: 5
 
         TextField {
             id: searchField
-            placeholderText: i18n("Busca una ubicación...")
-            Layout.fillWidth: true
+            width: parent.width
+            placeholderText: i18n("Search location...")
+            focus: true
             onTextChanged: {
                 if (text.length > 2) {
                     searchLocations(text)
                 } else {
                     resultsModel.clear()
-                    dialog.height = Kirigami.Units.gridUnit*6
+                    resultsView.height = 0
+                    dialog.height = Kirigami.Units.gridUnit * 6
+                }
+            }
+            Keys.onPressed: function(event) {
+                if (event.key === Qt.Key_Escape) {
+                    dialog.close()
                 }
             }
         }
 
         ListView {
             id: resultsView
-            Layout.fillWidth: true
-            // No usar fillHeight para que la lista no colapse
-            height: Math.min(resultsModel.count * Kirigami.Units.gridUnit*2, Kirigami.Units.gridUnit*16)
+            width: parent.width
+            height: Math.min(resultsModel.count * Kirigami.Units.gridUnit*2.5, Kirigami.Units.gridUnit*16)
             model: resultsModel
             clip: true
+            spacing: 2
+
             delegate: ItemDelegate {
-                width: parent.width
-                height: Kirigami.Units.gridUnit*2
-                text: display_name
+                width: ListView.view.width
+                height: Kirigami.Units.gridUnit*2.5
+                padding: Kirigami.Units.smallSpacing
+
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: Kirigami.Units.smallSpacing
+                    spacing: Kirigami.Units.smallSpacing
+
+                    Kirigami.Icon {
+                        source: "gps"
+                        width: Kirigami.Units.iconSizes.smallMedium
+                        height: width
+                        color: Kirigami.Theme.highlightColor
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: display_name
+                        elide: Text.ElideRight
+                    }
+                }
+
                 onClicked: {
                     dialog.selectedLatitude = parseFloat(lat)
                     dialog.selectedLongitude = parseFloat(lon)
@@ -52,6 +92,15 @@ Kirigami.Dialog {
                     dialog.close()
                 }
             }
+        }
+
+        Label {
+            width: parent.width
+            visible: searchField.text.length > 2 && resultsModel.count === 0
+            text: i18n("No locations found")
+            horizontalAlignment: Text.AlignHCenter
+            opacity: 0.5
+            font.italic: true
         }
     }
 
@@ -66,23 +115,23 @@ Kirigami.Dialog {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText)
                     resultsModel.clear()
+                    console.log("Found features:", data.features.length)
                     for (var i = 0; i < data.features.length; i++) {
                         var feature = data.features[i]
                         var city = feature.properties.city || ""
                         var textUbication = feature.properties.city || feature.properties.county || feature.properties.state || feature.properties.name
-                        console.log(textUbication)
                         var country = feature.properties.country || ""
+                        var displayName = feature.properties.name + (city ? ", " + city : "") + (country ? ", " + country : "")
+                        console.log("Adding result:", displayName)
                         resultsModel.append({
-                            display_name: feature.properties.name + (city ? ", " + city : "") + (country ? ", " + country : ""),
-                                            lat: feature.geometry.coordinates[1],
-                                            lon: feature.geometry.coordinates[0],
-                                            ubication: textUbication
+                            display_name: displayName,
+                            lat: feature.geometry.coordinates[1],
+                            lon: feature.geometry.coordinates[0],
+                            ubication: textUbication
                         })
                     }
-
-                    // Ajusta altura del diálogo según cantidad de resultados
-                    resultsView.height = Math.min(resultsModel.count * Kirigami.Units.gridUnit*2, Kirigami.Units.gridUnit*16)
-                    dialog.height = resultsView.height + searchField.implicitHeight + 16
+                    resultsView.height = Math.min(resultsModel.count * Kirigami.Units.gridUnit*2.5, Kirigami.Units.gridUnit*16)
+                    dialog.height = resultsView.height + searchField.implicitHeight + 30
                 } else {
                     console.log("Error al consultar la API:", xhr.status)
                 }

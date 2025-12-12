@@ -1,275 +1,344 @@
-# Translation of plasma Freyry in LANGUAGE
+# Translation of plasma Freyry in Turkish
 # Copyright (C) 2025
 # This file is distributed under the same license as the plasma flex hub package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Freyry Weather\n"
 "Report-Msgid-Bugs-To: https://github.com/zayronxio/Freyry.Weather/\n"
 "POT-Creation-Date: 2025-12-08 00:00-0000\n"
-"PO-Revision-Date: 2025\n"
+"PO-Revision-Date: 2025-12-12\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-```
 #: ../contents/config/config.qml
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: ../contents/config/config.qml
 msgid "Weather Settings"
-msgstr ""
+msgstr "Hava Ayarları"
 
 #: ../contents/ui/js/utilities.js
 msgid "Clear"
-msgstr ""
+msgstr "Açık"
 
 #: ../contents/ui/js/utilities.js
 msgid "Mainly clear"
-msgstr ""
+msgstr "Çoğunlukla açık"
 
 #: ../contents/ui/js/utilities.js
 msgid "Partly cloudy"
-msgstr ""
+msgstr "Kısmen bulutlu"
 
 #: ../contents/ui/js/utilities.js
 msgid "Overcast"
-msgstr ""
+msgstr "Kapalı"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle light intensity"
-msgstr ""
+msgstr "Hafif çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle moderate intensity"
-msgstr ""
+msgstr "Orta çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle dense intensity"
-msgstr ""
+msgstr "Yoğun çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle light intensity"
-msgstr ""
+msgstr "Hafif donan çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle dense intensity"
-msgstr ""
+msgstr "Yoğun donan çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain slight intensity"
-msgstr ""
+msgstr "Hafif yağmur"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain moderate intensity"
-msgstr ""
+msgstr "Orta yağmur"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain heavy intensity"
-msgstr ""
+msgstr "Şiddetli yağmur"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain light intensity"
-msgstr ""
+msgstr "Hafif donan yağmur"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Rain heavy intensity"
-msgstr ""
+msgstr "Şiddetli donan yağmur"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall slight intensity"
-msgstr ""
+msgstr "Hafif kar"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall moderate intensity"
-msgstr ""
+msgstr "Orta kar"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snowfall heavy intensity"
-msgstr ""
+msgstr "Şiddetli kar"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow grains"
-msgstr ""
+msgstr "Kar taneleri"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers slight"
-msgstr ""
+msgstr "Hafif sağanak"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers moderate"
-msgstr ""
+msgstr "Orta sağanak"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers violent"
-msgstr ""
+msgstr "Şiddetli sağanak"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers slight"
-msgstr ""
+msgstr "Hafif kar sağanağı"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers heavy"
-msgstr ""
+msgstr "Şiddetli kar sağanağı"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm"
-msgstr ""
+msgstr "Gök gürültülü fırtına"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm with slight hail"
-msgstr ""
+msgstr "Hafif dolu ile gök gürültülü fırtına"
 
 #: ../contents/ui/js/utilities.js
 msgid "Cloudy"
-msgstr ""
+msgstr "Bulutlu"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle"
-msgstr ""
+msgstr "Çisenti"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow"
-msgstr ""
+msgstr "Kar"
 
 #: ../contents/ui/js/utilities.js
 msgid "Hail"
-msgstr ""
+msgstr "Dolu"
 
 #: ../contents/ui/js/utilities.js
 msgid "Showers"
-msgstr ""
+msgstr "Sağanak"
 
 #: ../contents/ui/js/utilities.js
 msgid "Storm"
-msgstr ""
+msgstr "Fırtına"
 
 #: ../contents/ui/js/utilities.js
 msgid "Low"
-msgstr ""
+msgstr "Düşük"
 
 #: ../contents/ui/js/utilities.js
 msgid "Moderate"
-msgstr ""
+msgstr "Orta"
 
 #: ../contents/ui/js/utilities.js
 msgid "High"
-msgstr ""
+msgstr "Yüksek"
 
 #: ../contents/ui/js/utilities.js
 msgid "Very High"
-msgstr ""
+msgstr "Çok Yüksek"
 
 #: ../contents/ui/js/utilities.js
 msgid "Extreme"
-msgstr ""
+msgstr "Aşırı"
 
 #: ../contents/ui/MainView.qml
 msgid "Feels like"
-msgstr ""
+msgstr "Hissedilen"
 
 #: ../contents/ui/MainView.qml
 msgid "Wind"
-msgstr ""
+msgstr "Rüzgar"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunrise"
-msgstr ""
+msgstr "Gün doğumu"
 
 #: ../contents/ui/MainView.qml
 msgid "Sunset"
-msgstr ""
+msgstr "Gün batımı"
 
 #: ../contents/ui/MainView.qml
 msgid "Cloudiness"
-msgstr ""
+msgstr "Bulutluluk"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Panel Size:"
-msgstr ""
+msgstr "Yazı Tipi Paneli Boyutu:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Only Icon Weather"
-msgstr ""
+msgstr "Sadece Hava İkonu"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show temperature weather"
-msgstr ""
+msgstr "Sıcaklığı göster"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show weather conditions"
-msgstr ""
+msgstr "Hava koşullarını göster"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Bold"
-msgstr ""
+msgstr "Kalın Yazı Tipi"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "12-hour (AM/PM)"
-msgstr ""
+msgstr "12 saatlik (AM/PM)"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
-msgstr ""
+msgstr "Rüzgar Birimi:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Temperature Unit:"
-msgstr ""
+msgstr "Sıcaklık Birimi:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Weather Metrics"
-msgstr ""
+msgstr "Hava Metrikleri"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Speed"
-msgstr ""
+msgstr "Rüzgar Hızı"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Feels Like"
-msgstr ""
+msgstr "Hissedilen"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "UV Level"
-msgstr ""
+msgstr "UV Seviyesi"
+
+#: ../contents/ui/MainView.qml
+msgid "UV"
+msgstr "UV"
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "pm"
+msgstr "pm"
+
+#: ../contents/ui/WeatherConfig.qml
+#: ../contents/ui/Header.qml
+msgid "unknown"
+msgstr "bilinmeyen"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Humidity"
-msgstr ""
+msgstr "Nem"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Rain"
-msgstr ""
+msgstr "Yağmur"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
-msgstr ""
+msgstr "Maks/Min"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
-msgstr ""
+msgstr "Gün Doğumu / Gün Batımı"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
-msgstr ""
+msgstr "Bulut Örtüsü"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Search Coordinates"
-msgstr ""
+msgstr "Koordinatları Ara"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Use Location of your ip"
-msgstr ""
+msgstr "IP konumunuzu kullan"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Latitude"
-msgstr ""
+msgstr "Enlem"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Longitude"
-msgstr ""
+msgstr "Boylam"
+
+#: ../contents/ui/FindCity.qml
+msgid "Search location..."
+msgstr "Konum ara..."
+
+#: ../contents/ui/FindCity.qml
+msgid "Search for Location"
+msgstr "Konum Ara"
+
+#: ../contents/ui/FindCity.qml
+msgid "Enter the name of a city or location to find its coordinates"
+msgstr "Koordinatlarını bulmak için bir şehir veya konum adı girin"
+
+#: ../contents/ui/FindCity.qml
+msgid "No locations found"
+msgstr "Konum bulunamadı"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Font Settings"
+msgstr "Yazı Tipi Ayarları"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Display Options"
+msgstr "Görüntüleme Seçenekleri"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Time Format"
+msgstr "Zaman Formatı"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Location"
+msgstr "Konum"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Units"
+msgstr "Birimler"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "km/h"
+msgstr "km/h"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "mph"
+msgstr "mph"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "m/s"
+msgstr "m/s"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+

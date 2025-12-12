@@ -8,7 +8,7 @@
         ],
         "Name": "Freyry",
         "Id": "Freyry.Weather",
-        "Description": "compact weather widget.",
+        "Description": "compact weather widget",
         "Category": "Utilities",
         "Icon": "weather",
         "EnabledByDefault": true,
@@ -16,8 +16,8 @@
         "ServiceTypes": [
             "Plasma/Applet"
         ],
-        "Version": "0.1",
-        "Website": "https://github.com/zayronxio/Freyry.Weather"
+        "Version": "0.2.7",
+        "Website": "https://github.com/zayronxio/Freyry.Weather/"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-MainScript": "ui/main.qml"

@@ -1,7 +1,3 @@
-/*
- *  SPDX-FileCopyrightText: zayronxio
- *  SPDX-License-Identifier: GPL-3.0-or-later
- */
 import QtQuick
 import QtQuick.Layouts 1.15
 import org.kde.plasma.plasmoid 2.0
@@ -27,14 +23,14 @@ Item {
 
     onWidgetExpandedChanged: {
         if (!widgetExpanded) {
-            currentIndex = 0 // when the widget disappears, it returns to its original state, and when you open it again, the first section will be shown
+            currentIndex = 0
         }
     }
     Header {
         id: header
         height: Kirigami.Units.gridUnit
         width: parent.width
-        headerText: weatherData.city // name of city
+        headerText: weatherData.city
 
         onNext: currentIndex = (currentIndex + 1) % sections.length
         onPrev: currentIndex = (currentIndex - 1 + sections.length) % sections.length

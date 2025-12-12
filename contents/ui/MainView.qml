@@ -18,13 +18,26 @@ Item {
     property string formattTime: ""
     property var valuesMainView: []
 
+    function getTranslatedWindUnit(unit) {
+        if (unit === "km/h") return i18n("km/h")
+        if (unit === "mph") return i18n("mph")
+        if (unit === "m/s") return i18n("m/s")
+        return unit
+    }
+
+    function getTranslatedTempUnit(unit) {
+        if (unit === "Celsius") return "°C"
+        if (unit === "Fahrenheit") return "°F"
+        return unit
+    }
+
     property var listMetrics: [
     { name: "Feels Like", nameText: "Feels Like", value: (temperatureUnit === "Celsius" ? weatherData.apparentTemperature : FahrenheitFormatt.fahrenheit(weatherData.apparentTemperature)) + "°"},
-    { name: "UV Level", nameText: "UV", value: weatherData.currentUvIndexText },
+    { name: "UV Level", nameText: i18n("UV"), value: weatherData.currentUvIndexText },
     { name: "Humidity", nameText: "Humidity", value: weatherData.currentWeather + "%" },
     { name: "Max/Min", nameText: "Max/Min", value: (temperatureUnit === "Celsius" ? weatherData.dailyWeatherMax[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMax[0])) + `|` + (temperatureUnit === "Celsius" ? weatherData.dailyWeatherMin[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMin[0])) },
     { name: "Rain", nameText: "Rain", value: weatherData.dailyWeatherMax[0] + "%"},
-    { name: "Wind Speed", nameText: "Wind", value: roundMax2Number((windUnitsUpdate(weatherData.windSpeed, Plasmoid.configuration.windUnit))) + " " + Plasmoid.configuration.windUnit},
+    { name: "Wind Speed", nameText: "Wind", value: roundMax2Number((windUnitsUpdate(weatherData.windSpeed, Plasmoid.configuration.windUnit))) + " " + getTranslatedWindUnit(Plasmoid.configuration.windUnit)},
     { name: "Sunrise / Sunset", nameText: "Sunrise / Sunset", value: sunriseOrSunset() },
     { name: "Cloud Cover", nameText: "Cloudiness", value: weatherData.cloudCover + "%"}
     ]
@@ -40,15 +53,26 @@ Item {
                 }
             }
         }
-        valuesMainView = newValues; // Reasignación dispara el binding
+        valuesMainView = newValues;
         namesTitles = newNames
+    }
+
+    function formatTimeWithCustomAMPM(dateTime, format) {
+        var formatted = Qt.formatDateTime(dateTime, format);
+        formatted = formatted.replace(/\bPM\b/g, function(match) {
+            return i18n("pm")
+        });
+        formatted = formatted.replace(/\bpm\b/g, function(match) {
+            return i18n("pm")
+        });
+        return formatted;
     }
 
     function sunriseOrSunset() {
         if (weatherData.hourlyIsDay[0] === 1) {
-            return Qt.formatDateTime(weatherData.hourlyTimes[weatherData.hourlyIsDay.indexOf(0)], formatTime);
+            return formatTimeWithCustomAMPM(weatherData.hourlyTimes[weatherData.hourlyIsDay.indexOf(0)], formatTime);
         } else {
-            return Qt.formatDateTime(weatherData.hourlyTimes[weatherData.hourlyIsDay.indexOf(1)], formatTime);
+            return formatTimeWithCustomAMPM(weatherData.hourlyTimes[weatherData.hourlyIsDay.indexOf(1)], formatTime);
         }
     }
 
@@ -60,20 +84,18 @@ Item {
         ? metresPerSecond
         : x === "mph"
         ? milesPerHour
-        : kmh; // valor por defecto en km/h
+        : kmh;
     }
 
-    // helpers para redondeo/format
     function roundMax2Number(val) {
         var n = Number(val);
-        if (!isFinite(n)) return val; // si no es número, devuelve tal cual
+        if (!isFinite(n)) return val;
         return Math.round(n * 100) / 100;
     }
 
     function formatMax2(val) {
         var n = Number(val);
         if (!isFinite(n)) return "";
-        // toFixed(2) => siempre 2 decimales, luego quitamos ceros finales
         var s = n.toFixed(2).replace(/\.?0+$/, "");
         return s;
     }
@@ -129,7 +151,7 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: currentTemp.implicitWidth + 4
                 anchors.bottom: maxMin.top
-                text: temperatureUnit === "Celsius" ? "°C" : "°F"
+                text: getTranslatedTempUnit(temperatureUnit)
                 color: Kirigami.Theme.textColor
                 verticalAlignment: Text.AlignVCenter
                 height: 64 - maxMin.height -4
@@ -137,12 +159,10 @@ Item {
             }
 
             Kirigami.Heading {
-                id: maxMin// cityText
-                //height: currentTemp.height - tempUnit.height
+                id: maxMin
                 anchors.left: parent.left
                 anchors.leftMargin: currentTemp.implicitWidth + 4
                 anchors.bottom: parent.bottom
-                //color: weatherData.dailyWeatherMax[0] ? Kirigami.Theme.colorText : "transparent"
                 text: weatherData.currentTextWeather ? weatherData.currentTextWeather : "--"
                 font.weight: Font.DemiBold
                 opacity: 0.6
@@ -153,7 +173,7 @@ Item {
                 id: weatherIcon
                 width: parent.height
                 height: width
-                source: weatherData.currentIconWeather //It will be defined based on the API and the weather lib
+                source: weatherData.currentIconWeather
                 anchors.right: parent.right
             }
         }
@@ -189,7 +209,6 @@ Item {
                             width: parent.width
                             horizontalAlignment: Text.AlignHCenter
                             text: valuesMainView[modelData] ? valuesMainView[modelData]  : "--"
-                            //font.weight: Font.DemiBold
                             opacity: 0.7
                             level: 5
                         }

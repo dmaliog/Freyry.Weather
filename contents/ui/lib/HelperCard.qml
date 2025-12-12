@@ -85,17 +85,15 @@ Item {
                 anchors.margins: - 6
                 layer.enabled: true
                 opacity: isMask ? 0 : 0.1
-                // Rectángulo invisible: solo define la forma de la sombra
                 Rectangle {
                     id: shadowWidget
                     anchors.fill: parent
                     anchors.margins: 6
                     color: customColorbg
-                    visible: false    // 👈 nunca se dibuja
+                    visible: false
                     radius: customRadius
                 }
 
-                // La sombra se dibuja en base al shadowWidget invisible
                 DropShadow {
                     anchors.fill: shadowWidget
                     source: shadowWidget

@@ -23,6 +23,7 @@ Item {
     property var widthReal: isVertical ? root.width : initial.implicitWidth
     property var hVerti: wrapper_vertical.implicitHeight
     property var heightReal: isVertical ? hVerti : root.height
+    property string temperatureUnit: Plasmoid.configuration.temperatureUnit
 
     MouseArea {
         id: compactMouseArea
@@ -32,6 +33,8 @@ Item {
 
         onClicked: root.expanded = !root.expanded
     }
+
+
     RowLayout {
         id: initial
         width: icon.width + columntemandweathertext.width + icon.width * 0.3
@@ -129,7 +132,7 @@ Item {
             Label {
                 id: subtextGrados_vertical
                 height: parent.height
-                text: (weatherWidget.temperatureUnit === "Celsius") ? " °C" : " °F"
+                text: (temperatureUnit === "Celsius") ? " °C" : " °F"
                 font.bold: boldfonts
                 font.pixelSize: fonssizes
                 color: PlasmaCore.Theme.textColor

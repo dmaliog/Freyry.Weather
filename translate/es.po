@@ -5,16 +5,14 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Freyry Weather\n"
-"Report-Msgid-Bugs-To: https://github.com/zayronxio/Freyry.Weather/\n"
-"POT-Creation-Date: 2025-12-08 00:00-0000\n"
-"PO-Revision-Date: 2025\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish <LL@li.org>\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "General"
+
+#: ../contents/config/config.qml
+msgid "Weather Settings"
+msgstr "Configuración del Tiempo"
 
 #: ../contents/ui/js/utilities.js
 msgid "Clear"
@@ -42,7 +40,7 @@ msgstr "Llovizna moderada"
 
 #: ../contents/ui/js/utilities.js
 msgid "Drizzle dense intensity"
-msgstr "Llovizna intensa"
+msgstr "Llovizna densa"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle light intensity"
@@ -50,7 +48,7 @@ msgstr "Llovizna helada ligera"
 
 #: ../contents/ui/js/utilities.js
 msgid "Freezing Drizzle dense intensity"
-msgstr "Llovizna helada intensa"
+msgstr "Llovizna helada densa"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain slight intensity"
@@ -86,7 +84,7 @@ msgstr "Nevada intensa"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow grains"
-msgstr "Granizo pequeño"
+msgstr "Granos de nieve"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers slight"
@@ -98,7 +96,7 @@ msgstr "Chubascos moderados"
 
 #: ../contents/ui/js/utilities.js
 msgid "Rain showers violent"
-msgstr "Chubascos fuertes"
+msgstr "Chubascos violentos"
 
 #: ../contents/ui/js/utilities.js
 msgid "Snow showers slight"
@@ -110,7 +108,7 @@ msgstr "Chubascos de nieve intensos"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm"
-msgstr "Tormenta eléctrica"
+msgstr "Tormenta"
 
 #: ../contents/ui/js/utilities.js
 msgid "Thunderstorm with slight hail"
@@ -154,7 +152,7 @@ msgstr "Alto"
 
 #: ../contents/ui/js/utilities.js
 msgid "Very High"
-msgstr "Muy alto"
+msgstr "Muy Alto"
 
 #: ../contents/ui/js/utilities.js
 msgid "Extreme"
@@ -162,7 +160,7 @@ msgstr "Extremo"
 
 #: ../contents/ui/MainView.qml
 msgid "Feels like"
-msgstr "Sensación"
+msgstr "Sensación térmica"
 
 #: ../contents/ui/MainView.qml
 msgid "Wind"
@@ -177,20 +175,16 @@ msgid "Sunset"
 msgstr "Atardecer"
 
 #: ../contents/ui/MainView.qml
-msgid "UV"
-msgstr "UV"
-
-#: ../contents/ui/MainView.qml
 msgid "Cloudiness"
 msgstr "Nubosidad"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Panel Size:"
-msgstr "Tamaño de fuente del panel:"
+msgstr "Tamaño de Fuente del Panel:"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Only Icon Weather"
-msgstr "Solo ícono del clima"
+msgstr "Solo Icono del Tiempo"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show temperature weather"
@@ -198,11 +192,11 @@ msgstr "Mostrar temperatura"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Show weather conditions"
-msgstr "Mostrar condiciones meteorológicas"
+msgstr "Mostrar condiciones climáticas"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "Font Bold"
-msgstr "Fuente Bold"
+msgstr "Fuente en Negrita"
 
 #: ../contents/ui/ConfigGeneral.qml
 msgid "12-hour (AM/PM)"
@@ -210,27 +204,41 @@ msgstr "12 horas (AM/PM)"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
-msgstr "Unidad de viento:"
+msgstr "Unidad de Viento:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Temperature Unit:"
-msgstr "Unidad de temperatura:"
+msgstr "Unidad de Temperatura:"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Weather Metrics"
-msgstr "Métricas del clima"
+msgstr "Métricas del Tiempo"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Speed"
-msgstr "Velocidad del viento"
+msgstr "Velocidad del Viento"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Feels Like"
-msgstr "Sensación"
+msgstr "Sensación Térmica"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "UV Level"
-msgstr "Nivel UV"
+msgstr "Nivel de UV"
+
+#: ../contents/ui/MainView.qml
+msgid "UV"
+msgstr "UV"
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "pm"
+msgstr "pm"
+
+#: ../contents/ui/WeatherConfig.qml
+#: ../contents/ui/Header.qml
+msgid "unknown"
+msgstr "desconocido"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Humidity"
@@ -250,7 +258,7 @@ msgstr "Amanecer / Atardecer"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
-msgstr "Nubosidad"
+msgstr "Cobertura de Nubes"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Search Coordinates"
@@ -258,7 +266,7 @@ msgstr "Buscar Coordenadas"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Use Location of your ip"
-msgstr "Usar Coordenadas de la ip"
+msgstr "Usar Ubicación de tu IP"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Latitude"
@@ -267,3 +275,60 @@ msgstr "Latitud"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Longitude"
 msgstr "Longitud"
+
+#: ../contents/ui/FindCity.qml
+msgid "Search location..."
+msgstr "Buscar ubicación..."
+
+#: ../contents/ui/FindCity.qml
+msgid "Search for Location"
+msgstr "Buscar Ubicación"
+
+#: ../contents/ui/FindCity.qml
+msgid "Enter the name of a city or location to find its coordinates"
+msgstr "Ingresa el nombre de una ciudad o ubicación para encontrar sus coordenadas"
+
+#: ../contents/ui/FindCity.qml
+msgid "No locations found"
+msgstr "No se encontraron ubicaciones"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Font Settings"
+msgstr "Configuración de Fuente"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Display Options"
+msgstr "Opciones de Visualización"
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Time Format"
+msgstr "Formato de Hora"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Location"
+msgstr "Ubicación"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Units"
+msgstr "Unidades"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "km/h"
+msgstr "km/h"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "mph"
+msgstr "mph"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "m/s"
+msgstr "m/s"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+

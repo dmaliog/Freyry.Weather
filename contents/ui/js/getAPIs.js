@@ -1,7 +1,5 @@
 function obtenerDatosClimaticos(latitud, longitud, callback) {
-    let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&hourly=temperature_2m,weather_code,precipitation_probability,uv_index,is_day&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,cloud_cover&timezone=auto&forecast_days=14&past_hours=24`;
-
-
+    let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,weather_code,cloud_cover,wind_speed_10m,uv_index&hourly=temperature_2m,precipitation_probability,weather_code,is_day,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto`;
     let req = new XMLHttpRequest();
     req.open("GET", url, true);
 
@@ -19,7 +17,7 @@ function obtenerDatosClimaticos(latitud, longitud, callback) {
 
     req.onerror = function () {
         console.error("Error de la red.");
-        callback(null); // Devolver null en caso de error de red
+        callback(null); 
     };
 
     req.send();
@@ -64,7 +62,7 @@ function getNameCity(latitude, longitud, leng, callback) {
 }
 
 function obtenerCoordenadas(callback) {
-    let url = "http://ip-api.com/json/?fields=lat,lon";
+    let url = "http://ip-api.com/json/";
 
     let req = new XMLHttpRequest();
     req.open("GET", url, true);
@@ -75,21 +73,21 @@ function obtenerCoordenadas(callback) {
                 try {
                     let datos = JSON.parse(req.responseText);
                     console.log(`Coordenadas obtenidas:`);
-                    callback(datos); // Devolver coordenadas completas
+                    callback(datos); 
                 } catch (error) {
                     console.error("Error procesando la respuesta JSON:", error);
-                    callback(null); // Devolver null en caso de error de parsing
+                    callback(null); 
                 }
             } else {
                 console.error(`Error en la solicitud: ${req.status}`);
-                callback(null); // Devolver null en caso de error de solicitud
+                callback(null); 
             }
         }
     };
 
     req.onerror = function () {
         console.error("Error de red al intentar obtener coordenadas.");
-        callback(null); // Devolver null en caso de error de red
+        callback(null); 
     };
 
     req.send();

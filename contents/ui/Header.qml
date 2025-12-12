@@ -11,7 +11,7 @@ Item {
     Kirigami.Heading {
         width: parent.width
         font.weight: Font.DemiBold
-        text: headerText ? headerText : "unknown"
+        text: headerText ? headerText : i18n("unknown")
         anchors.horizontalCenter: parent.horizontalCenter
         color: Kirigami.Theme.textColor
         level: 5

@@ -9,7 +9,7 @@ Item {
 
   signal dataChanged
 
-  property bool active: true //plasmoid.configuration.weatheCardActive
+  property bool active: true
   property bool useCoordinatesIp: Plasmoid.configuration.ipLocation
 
   property bool loadingComplete: false
@@ -28,7 +28,6 @@ Item {
   property var observerCoordenates: latitudeC + longitudeC
 
   property bool updateWeather: false
-  //property int indexTime
 
   property int currenWeatherCode
   property string currentIconWeather
@@ -46,7 +45,7 @@ Item {
   property var hourlyWeatherCodes: []
   property var hourlyPrecipitationProbability: []
   property var hourlyUvIndex: []
-  property var hourlyIsDay: [] //1 is day, 0 is Night
+  property var hourlyIsDay: []
   property var iconsHourlyWeather: []
 
   property var dailyTime: []
@@ -56,7 +55,7 @@ Item {
   property var dailyPrecipitationProbabilityMax: []
 
   property var iconsDailyWather: []
-  property bool isUpdate: true//false
+  property bool isUpdate: true
   property int retrysCity: 0
   property bool exeGetApi: false
   property bool updateRecent: Plasmoid.configuration.updateRecent
@@ -65,6 +64,7 @@ Item {
 
   onLatitudeCChanged: checkCoords()
   onLongitudeCChanged: checkCoords()
+  onUpdateRecentChanged: checkCoords()
 
   Component.onCompleted: {
     loadingComplete = true
@@ -258,9 +258,6 @@ Item {
     }
   }
 
-  onUpdateRecentChanged: {
-    console.log(updateRecent)
-  }
   Timer {
     id: tim
     running: false
@@ -269,14 +266,13 @@ Item {
     onTriggered: {
       city = cityUbication
       getWeatherApi()
-      updateRecent = false
-      console.log("se ejecuto")
+      Plasmoid.configuration.updateRecent = false
     }
   }
   function checkCoords() {
 
     console.log("intento", updateRecent, cityUbication, latitudeC, longitudeC)
-    if (active && !useCoordinatesIp && latitudeC !== "0" && longitudeC !== "0" && loadingComplete && updateRecent) {
+    if (active && !useCoordinatesIp && latitudeC != 0 && longitudeC != 0 && loadingComplete && updateRecent) {
       tim.start()
     }
   }
