@@ -10,7 +10,6 @@ This fork includes various improvements and customizations:
 - **Enhanced card styling** — completely redesigned cards with theme integration for consistent appearance
 - **Bug fixes and improvements** — fixed all errors, warnings, and configuration issues
 - **Multi-language support** — translated to multiple languages (English, Russian, German, Spanish, French, Korean, Dutch, Polish, Portuguese, Turkish, Ukrainian, Chinese)
-- **Design improvements** — enhanced UI/UX with better visual consistency
 - **Code cleanup** — removed unnecessary comments and improved code quality
 
 ## ✨ Features
