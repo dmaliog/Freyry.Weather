@@ -26,7 +26,7 @@ All files in this project are subject to the GPL-3.0-or-later license. See the [
 
 ## Copyright
 
-Copyright (C) 2024 ApexOS Weather Contributors
+Copyright (C) 2025 ApexOS Weather Contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
