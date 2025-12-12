@@ -1,13 +1,19 @@
-#!/bin/bash
+#!/bin/sh
+# Version: 20
+
+# https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems
+# https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories
+# https://invent.kde.org/sysadmin/l10n-scripty/-/blob/master/extract-messages.sh
 
 DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
 plasmoidName=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Name"`
-widgetName="${plasmoidName
+widgetName="${plasmoidName##*.}" # Strip namespace
 website=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Website"`
 bugAddress="$website"
-packageRoot=".." 
-projectName="plasma_applet_${plasmoidName}" 
+packageRoot=".." # Root of translatable sources
+projectName="plasma_applet_${plasmoidName}" # project name
 
+#---
 if [ -z "$plasmoidName" ]; then
 	echo "[merge] Error: Couldn't read plasmoidName."
 	exit
@@ -20,6 +26,7 @@ if [ -z "$(which xgettext)" ]; then
 	echo "[merge] gettext installation should be finished. Going back to merging translations."
 fi
 
+#---
 echo "[merge] Extracting messages"
 potArgs="--from-code=UTF-8 --width=200 --add-location=file"
 
@@ -36,6 +43,12 @@ xgettext \
 
 sed -i 's/"Content-Type: text\/plain; charset=CHARSET\\n"/"Content-Type: text\/plain; charset=UTF-8\\n"/' "template.pot.new"
 
+# See Ki18n's extract-messages.sh for a full example:
+# https://invent.kde.org/sysadmin/l10n-scripty/-/blob/master/extract-messages.sh#L25
+# The -kN_ and -kaliasLocale keywords are mentioned in the Outside_KDE_repositories wiki.
+# We don't need -kN_ since we don't use intltool-extract but might as well keep it.
+# I have no idea what -kaliasLocale is used for. Googling aliasLocale found only listed kde1 code.
+# We don't need to parse -ki18nd since that'll extract messages from other domains.
 find "${packageRoot}" -name '*.cpp' -o -name '*.h' -o -name '*.c' -o -name '*.qml' -o -name '*.js' | sort > "${DIR}/infiles.list"
 xgettext \
 	${potArgs} \
@@ -60,15 +73,16 @@ xgettext \
 	|| \
 	{ echo "[merge] error while calling xgettext. aborting."; exit 1; }
 
-sed -i 's/
-sed -i 's/
+sed -i 's/# SOME DESCRIPTIVE TITLE./'"# Translation of ${widgetName} in LANGUAGE"'/' "template.pot.new"
+sed -i 's/# Copyright (C) YEAR THE PACKAGE'"'"'S COPYRIGHT HOLDER/'"# Copyright (C) $(date +%Y)"'/' "template.pot.new"
 
 if [ -f "template.pot" ]; then
-	newPotDate=`grep "POT-Creation-Date:" template.pot.new | sed 's/.\{3\}$
-	oldPotDate=`grep "POT-Creation-Date:" template.pot | sed 's/.\{3\}$
+	newPotDate=`grep "POT-Creation-Date:" template.pot.new | sed 's/.\{3\}$//'`
+	oldPotDate=`grep "POT-Creation-Date:" template.pot | sed 's/.\{3\}$//'`
 	sed -i 's/'"${newPotDate}"'/'"${oldPotDate}"'/' "template.pot.new"
 	changes=`diff "template.pot" "template.pot.new"`
 	if [ ! -z "$changes" ]; then
+		# There's been changes
 		sed -i 's/'"${oldPotDate}"'/'"${newPotDate}"'/' "template.pot.new"
 		mv "template.pot.new" "template.pot"
 
@@ -83,9 +97,11 @@ if [ -f "template.pot" ]; then
 		echo ""
 
 	else
+		# No changes
 		rm "template.pot.new"
 	fi
 else
+	# template.pot didn't already exist
 	mv "template.pot.new" "template.pot"
 fi
 
@@ -99,6 +115,7 @@ echo "$templateLine" >> "./Status.md"
 rm "${DIR}/infiles.list"
 echo "[merge] Done extracting messages"
 
+#---
 echo "[merge] Merging messages"
 catalogs=`find . -name '*.po' | sort`
 for cat in $catalogs; do
@@ -121,9 +138,9 @@ for cat in $catalogs; do
 		-o "$cat.new" \
 		"$cat.new" "${DIR}/template.pot"
 
-	sed -i 's/
-	sed -i 's/
-	sed -i 's/
+	sed -i 's/# SOME DESCRIPTIVE TITLE./'"# Translation of ${widgetName} in ${catLocale}"'/' "$cat.new"
+	sed -i 's/# Translation of '"${widgetName}"' in LANGUAGE/'"# Translation of ${widgetName} in ${catLocale}"'/' "$cat.new"
+	sed -i 's/# Copyright (C) YEAR THE PACKAGE'"'"'S COPYRIGHT HOLDER/'"# Copyright (C) $(date +%Y)"'/' "$cat.new"
 
 	poEmptyMessageCount=`expr $(grep -Pzo 'msgstr ""\n(\n|$)' "$cat.new" | grep -c 'msgstr ""')`
 	poMessagesDoneCount=`expr $potMessageCount - $poEmptyMessageCount`
@@ -131,12 +148,15 @@ for cat in $catalogs; do
 	poLine=`perl -e "printf(\"$entryFormat\", \"$catLocale\", \"${poMessagesDoneCount}/${potMessageCount}\", \"${poCompletion}%\")"`
 	echo "$poLine" >> "./Status.md"
 
+	# mv "$cat" "$cat.old"
 	mv "$cat.new" "$cat"
 done
 echo "[merge] Done merging messages"
 
+#---
 echo "[merge] Updating .desktop file"
 
+# Generate LINGUAS for msgfmt
 if [ -f "$DIR/LINGUAS" ]; then
 	rm "$DIR/LINGUAS"
 fi
@@ -155,6 +175,7 @@ msgfmt \
 	-d "$DIR/" \
 	-o "$DIR/new.desktop"
 
+# Delete empty msgid messages that used the po header
 if [ ! -z "$(grep '^Name=$' "$DIR/new.desktop")" ]; then
 	echo "[merge] Name in metadata.desktop is empty!"
 	sed -i '/^Name\[/ d' "$DIR/new.desktop"
@@ -172,25 +193,30 @@ if [ ! -z "$(grep '^Keywords=$' "$DIR/new.desktop")" ]; then
 	sed -i '/^Keywords\[/ d' "$DIR/new.desktop"
 fi
 
+# Place translations at the bottom of the desktop file.
 translatedLines=`cat "$DIR/new.desktop" | grep "]="`
 if [ ! -z "${translatedLines}" ]; then
 	sed -i '/^Name\[/ d; /^GenericName\[/ d; /^Comment\[/ d; /^Keywords\[/ d' "$DIR/new.desktop"
 	if [ "$(tail -c 2 "$DIR/new.desktop" | wc -l)" != "2" ]; then
+		# Does not end with 2 empty lines, so add an empty line.
 		echo "" >> "$DIR/new.desktop"
 	fi
 	echo "${translatedLines}" >> "$DIR/new.desktop"
 fi
 
+# Cleanup
 mv "$DIR/new.desktop" "$DIR/../metadata.desktop"
 rm "$DIR/template.desktop"
 rm "$DIR/LINGUAS"
 
+#---
+# Populate ReadMe.md
 echo "[merge] Updating translate/ReadMe.md"
 sed -i -E 's`share\/plasma\/plasmoids\/(.+)\/translate`share/plasma/plasmoids/'"${plasmoidName}"'/translate`' ./ReadMe.md
 if [[ "$website" == *"github.com"* ]]; then
 	sed -i -E 's`\[new issue\]\(https:\/\/github\.com\/(.+)\/(.+)\/issues\/new\)`[new issue]('"${website}"'/issues/new)`' ./ReadMe.md
 fi
-sed -i '/^|/ d' ./ReadMe.md 
+sed -i '/^|/ d' ./ReadMe.md # Remove status table from ReadMe
 cat ./Status.md >> ./ReadMe.md
 rm ./Status.md
 

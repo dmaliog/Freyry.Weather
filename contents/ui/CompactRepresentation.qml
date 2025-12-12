@@ -10,20 +10,32 @@ import "./js/fahrenheitFormatt.js" as FahrenheitFormatt
 Item {
     id: iconAndTem
 
+    readonly property int horizontalPadding: 5
+    readonly property int textPadding: 4
+    readonly property real iconSpacingRatio: 0.2
+    readonly property real iconSpacingDivisor: 8
+
     Layout.minimumWidth: widthReal
     Layout.minimumHeight: heightReal
+    width: widthReal
+    height: heightReal
 
     readonly property bool isVertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
-    property string undefanchors: activeweathershottext ? undefined : parent.verticalCenter
     property bool textweather: Plasmoid.configuration.showConditionsWeather
+    property bool showTemperature: Plasmoid.configuration.showTemperatureWeather
     property bool activeweathershottext: heightH > 34
     property int fonssizes: Plasmoid.configuration.sizeFontPanel
     property int heightH: root.height
-    property var widthWidget: activeweathershottext ? temOfCo.implicitWidth : temOfCo.implicitWidth + wrapper_weathertext.width
-    property var widthReal: isVertical ? root.width : initial.implicitWidth
     property var hVerti: wrapper_vertical.implicitHeight
     property var heightReal: isVertical ? hVerti : root.height
     property string temperatureUnit: Plasmoid.configuration.temperatureUnit
+
+    readonly property real tempTextWidth: (showTemperature && textGrados) ? (textGrados.implicitWidth + subtextGrados.implicitWidth) : 0
+    readonly property real weatherTextWidth: (wrapper_weathertext && wrapper_weathertext.visible && shortweathertext) ? (shortweathertext.implicitWidth + textPadding) : 0
+    readonly property real calculatedTextWidth: Math.max(tempTextWidth, weatherTextWidth)
+
+    property var widthWidget: calculatedTextWidth
+    property var widthReal: isVertical ? root.width : (horizontalPadding + icon.width + (calculatedTextWidth > 0 ? calculatedTextWidth + icon.width * iconSpacingRatio : 0) + horizontalPadding)
 
     MouseArea {
         id: compactMouseArea
@@ -37,35 +49,45 @@ Item {
 
     RowLayout {
         id: initial
-        width: icon.width + columntemandweathertext.width + icon.width * 0.3
-        height: parent.height
-        spacing: icon.width / 5
+        anchors.fill: parent
+        implicitWidth: iconAndTem.horizontalPadding + icon.width + (iconAndTem.calculatedTextWidth > 0 ? iconAndTem.calculatedTextWidth + icon.width * iconAndTem.iconSpacingRatio : 0) + iconAndTem.horizontalPadding
+        spacing: icon.width / iconAndTem.iconSpacingDivisor
+        anchors.leftMargin: iconAndTem.horizontalPadding
+        anchors.rightMargin: iconAndTem.horizontalPadding
         visible: !isVertical
         Kirigami.Icon {
             id: icon
             width: root.height < 17 ? 16 : root.height < 24 ? 22 : 24
             height: width
             source: weatherData.currentIconWeather
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignVCenter
             roundToIconSize: false
         }
         Column {
             id: columntemandweathertext
-            width: widthWidget
-            height: temOfCo.implicitHeight
-            anchors.verticalCenter: parent.verticalCenter
+            Layout.fillWidth: false
+            Layout.preferredWidth: iconAndTem.calculatedTextWidth
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+            spacing: 0
+            Item {
+                width: parent.width
+                height: Math.max(0, (parent.height - (temOfCo.visible ? temOfCo.height : 0) - (wrapper_weathertext.visible ? wrapper_weathertext.height : 0)) / 2)
+            }
             Row {
                 id: temOfCo
-                width: textGrados.implicitWidth + subtextGrados.implicitWidth
-                height: textGrados.implicitHeight
-                anchors.verticalCenter: undefanchors
+                width: iconAndTem.calculatedTextWidth
+                height: showTemperature ? textGrados.implicitHeight : 0
+                visible: showTemperature
+                anchors.left: parent.left
+                spacing: 0
 
                 Label {
                     id: textGrados
                     height: parent.height
-                    width: parent.width - subtextGrados.implicitWidth
-                    text: temperatureUnit === "Celsius" ?  weatherData.currentWeather : FahrenheitFormatt.fahrenheit(weatherData.currentWeather)
+                    width: implicitWidth
+                    text: Math.round(temperatureUnit === "Celsius" ?  weatherData.currentWeather : FahrenheitFormatt.fahrenheit(weatherData.currentWeather))
                     font.bold: boldfonts
                     font.pixelSize: fonssizes
                     color: PlasmaCore.Theme.textColor
@@ -75,7 +97,7 @@ Item {
                 Label {
                     id: subtextGrados
                     height: parent.height
-                    width: parent.width - textGrados.implicitWidth
+                    width: implicitWidth
                     text: temperatureUnit === "Celsius" ? " °C " : " °F "
                     horizontalAlignment: Text.AlignLeft
                     font.bold: boldfonts
@@ -87,13 +109,16 @@ Item {
             Item {
                 id: wrapper_weathertext
                 height: shortweathertext.implicitHeight
-                width: shortweathertext.implicitWidth
+                width: iconAndTem.calculatedTextWidth
                 visible: activeweathershottext & textweather
+                anchors.left: parent.left
                 Label {
                     id: shortweathertext
+                    width: parent.width
                     text: weatherData.currentShortTextWeather
                     font.pixelSize: fonssizes
                     font.bold: true
+                    horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -102,7 +127,7 @@ Item {
     ColumnLayout {
         id: wrapper_vertical
         width: root.width
-        height: icon_vertical.height +  textGrados_vertical.implicitHeight
+        implicitHeight: icon_vertical.height + (showTemperature ? textGrados_vertical.implicitHeight : 0)
         spacing: 2
         visible: isVertical
         Kirigami.Icon {
@@ -110,20 +135,21 @@ Item {
             width: root.width < 17 ? 16 : root.width < 24 ? 22 : 24
             height: root.width < 17 ? 16 : root.width < 24 ? 22 : 24
             source: weatherData.currentIconWeather
-            anchors.left: parent.left
-            anchors.right: parent.right
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter
             roundToIconSize: false
         }
         Row {
             id: temOfCo_vertical
-            width: textGrados_vertical.implicitWidth + subtextGrados_vertical.implicitWidth
-            height: textGrados_vertical.implicitHeight
+            width: showTemperature ? (textGrados_vertical.implicitWidth + subtextGrados_vertical.implicitWidth) : 0
+            height: showTemperature ? textGrados_vertical.implicitHeight : 0
+            visible: showTemperature
             Layout.alignment: Qt.AlignHCenter
 
             Label {
                 id: textGrados_vertical
                 height: parent.height
-                text: weatherData.currentWeather
+                text: Math.round(temperatureUnit === "Celsius" ? weatherData.currentWeather : FahrenheitFormatt.fahrenheit(weatherData.currentWeather))
                 font.bold: boldfonts
                 font.pixelSize: fonssizes
                 color: PlasmaCore.Theme.textColor
@@ -139,9 +165,6 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
         }
-    }
-    Component.onCompleted: {
-        width = initial.width
     }
 
 }

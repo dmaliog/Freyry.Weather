@@ -212,6 +212,9 @@ msgstr "粗体"
 msgid "12-hour (AM/PM)"
 msgstr "12小时制（AM/PM）"
 
+msgid "Show minutes"
+msgstr "显示分钟"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "风力单位："
@@ -258,13 +261,33 @@ msgstr "湿度"
 msgid "Rain"
 msgstr "雨"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "降水量"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "最高/最低"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "温度范围"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "从"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "到"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "日出 / 日落"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "重置指标顺序"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "经度"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "搜索位置..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "搜索位置"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "输入城市或位置名称以查找其坐标"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,4 +356,16 @@ msgstr "摄氏度"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "华氏度"
+
+msgid "morning"
+msgstr "上午"
+
+msgid "afternoon"
+msgstr "下午"
+
+msgid "evening"
+msgstr "晚上"
+
+msgid "night"
+msgstr "夜间"
 

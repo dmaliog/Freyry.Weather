@@ -5,8 +5,6 @@ import org.kde.kirigami as Kirigami
 
 Item {
     id: root
-
-
     HelperCard {
         id: background
         isShadow: false

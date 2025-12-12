@@ -13,6 +13,7 @@ Item {
         font.weight: Font.DemiBold
         text: headerText ? headerText : i18n("unknown")
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         color: Kirigami.Theme.textColor
         level: 5
     }

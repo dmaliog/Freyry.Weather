@@ -29,12 +29,10 @@ Item {
     FindCity {
         id: findCity
         onReady: {
-            console.log("se esta ejecutando", findCity.cityPhoton)
             ubication.textUbication = findCity.cityPhoton
             coordinates.latitude = findCity.selectedLatitude
             coordinates.longitude = findCity.selectedLongitude
             coordinates.updateRecent = true
-            console.log(coordinates.updateRecent, "gggggg", ubication.textUbication)
             Plasmoid.configurationChanged()
         }
     }
@@ -103,7 +101,6 @@ Item {
                 metricsLayout.selectedMetricNames.push(allMetrics.get(i).name)
             }
         }
-        console.log("Selected metrics:", metricsLayout.selectedMetricNames)
     }
 
     ScrollView {
@@ -114,6 +111,8 @@ Item {
         ColumnLayout {
             width: scrollView.width
             spacing: Kirigami.Units.largeSpacing
+            Layout.topMargin: Kirigami.Units.smallSpacing
+            Layout.bottomMargin: Kirigami.Units.smallSpacing
 
             ColumnLayout {
                 Layout.fillWidth: true
@@ -312,11 +311,18 @@ Item {
                             }
                         }
                     }
+                    
+                    Button {
+                        Layout.fillWidth: true
+                        Layout.topMargin: Kirigami.Units.smallSpacing
+                        text: i18n("Reset Metrics Order")
+                        icon.name: "edit-undo"
+                        onClicked: {
+                            Plasmoid.configuration.metricsOrder = []
+                            Plasmoid.configurationChanged()
+                        }
+                    }
                 }
-            }
-
-            Item {
-                Layout.fillHeight: true
             }
         }
     }

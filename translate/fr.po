@@ -5,6 +5,16 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: Freyry Weather\n"
+"Report-Msgid-Bugs-To: https://github.com/zayronxio/Freyry.Weather/\n"
+"POT-Creation-Date: 2025-12-08 00:00-0000\n"
+"PO-Revision-Date: 2025\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <fr@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -202,6 +212,9 @@ msgstr "Police en gras"
 msgid "12-hour (AM/PM)"
 msgstr "12 heures (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Afficher les minutes"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Unité de vent:"
@@ -248,13 +261,33 @@ msgstr "Humidité"
 msgid "Rain"
 msgstr "Pluie"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Précipitations"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Max/Min"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Plage de température"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "de"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "à"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Lever / Coucher du soleil"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Réinitialiser l'ordre des métriques"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -279,14 +312,6 @@ msgstr "Longitude"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Rechercher un lieu..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Rechercher un lieu"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Entrez le nom d'une ville ou d'un lieu pour trouver ses coordonnées"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -331,4 +356,16 @@ msgstr "Celsius"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "morning"
+msgstr "du matin"
+
+msgid "afternoon"
+msgstr "de l'après-midi"
+
+msgid "evening"
+msgstr "du soir"
+
+msgid "night"
+msgstr "de la nuit"
 

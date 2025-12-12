@@ -1,12 +1,18 @@
 #!/bin/sh
+# Version: 6
+
+# This script will convert the *.po files to *.mo files, rebuilding the package/contents/locale folder.
+# Feature discussion: https://phabricator.kde.org/D5209
+# Eg: contents/locale/fr_CA/LC_MESSAGES/plasma_applet_org.kde.plasma.eventcalendar.mo
 
 DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
 plasmoidName=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Name"`
 website=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Website"`
 bugAddress="$website"
-packageRoot=".."
-projectName="plasma_applet_${plasmoidName}"
+packageRoot=".." # Root of translatable sources
+projectName="plasma_applet_${plasmoidName}" # project name
 
+#---
 if [ -z "$plasmoidName" ]; then
 	echo "[build] Error: Couldn't read plasmoidName."
 	exit
@@ -19,6 +25,7 @@ if [ -z "$(which msgfmt)" ]; then
 	echo "[build] gettext installation should be finished. Going back to installing translations."
 fi
 
+#---
 echo "[build] Compiling messages"
 
 catalogs=`find . -name '*.po' | sort`

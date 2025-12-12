@@ -21,29 +21,56 @@ Item {
     property var sections: [mainWeatherView, hourlyForecastView, dailyForecastView]
     property int currentIndex: 0
 
+    Connections {
+        target: weatherData
+        function onDataChanged() {
+            Qt.callLater(function() {
+                if (hourlyForecastView.status === Loader.Ready) {
+                    var hourlyItem = hourlyForecastView.item
+                    if (hourlyItem && hourlyItem.updateStartIndex) {
+                        hourlyItem.updateStartIndex()
+                    }
+                }
+            })
+        }
+    }
     onWidgetExpandedChanged: {
         if (!widgetExpanded) {
             currentIndex = 0
         }
     }
-    Header {
-        id: header
-        height: Kirigami.Units.gridUnit
-        width: parent.width
-        headerText: weatherData.city
+    ColumnLayout {
+        anchors.fill: parent
+        spacing: 0
 
-        onNext: currentIndex = (currentIndex + 1) % sections.length
-        onPrev: currentIndex = (currentIndex - 1 + sections.length) % sections.length
-    }
-    Loader {
-        width: parent.width
-        height: parent.height - Kirigami.Units.gridUnit*1.5
-        anchors.bottom: parent.bottom
-        sourceComponent: sections[currentIndex]
+        Header {
+            id: header
+            Layout.preferredHeight: Kirigami.Units.gridUnit
+            Layout.fillWidth: true
+            headerText: weatherData.city
+
+            onNext: currentIndex = (currentIndex + 1) % sections.length
+            onPrev: currentIndex = (currentIndex - 1 + sections.length) % sections.length
+        }
+        
+        Loader {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            sourceComponent: sections[currentIndex]
+        }
     }
 
-    Component { id: mainWeatherView;    MainView {} }
-    Component { id: hourlyForecastView; HourlyForecast {} }
-    Component { id: dailyForecastView;  DailyForecast {} }
+    Component { 
+        id: mainWeatherView
+        MainView {}
+    }
+    Component { 
+        id: hourlyForecastView
+        HourlyForecast {}
+    }
+    Component { 
+        id: dailyForecastView
+        DailyForecast {}
+    }
 }
 

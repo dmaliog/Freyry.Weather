@@ -122,7 +122,6 @@ Item {
         if (!result) {
           retrycity.start()
         }
-        console.log(city)
       });
     }
   }
@@ -176,7 +175,6 @@ Item {
         for (var b = 0; b < 6; b++) {
 
           dailyTime.push(result.daily.time[b]);
-          console.log(result.daily.time[b], result.daily.time[0])
           dailyWeatherCode.push(result.daily.weather_code[b]);
           dailyWeatherMax.push(result.daily.temperature_2m_max[b]);
           dailyWeatherMin.push(result.daily.temperature_2m_min[b]);
@@ -244,7 +242,14 @@ Item {
     repeat: true
     onTriggered: {
      if (updateWeather) {
-       getWeatherApi();
+       if (useCoordinatesIp) {
+         getCoordinatesWithIp()
+       } else {
+         if (latitudeC != 0 && longitudeC != 0) {
+           getCityFuncion()
+           getWeatherApi()
+         }
+       }
     }
     }
   }
@@ -270,8 +275,6 @@ Item {
     }
   }
   function checkCoords() {
-
-    console.log("intento", updateRecent, cityUbication, latitudeC, longitudeC)
     if (active && !useCoordinatesIp && latitudeC != 0 && longitudeC != 0 && loadingComplete && updateRecent) {
       tim.start()
     }

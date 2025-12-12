@@ -212,6 +212,9 @@ msgstr "Vetgedrukt"
 msgid "12-hour (AM/PM)"
 msgstr "12-uur (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Minuten weergeven"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Windeenheid:"
@@ -258,13 +261,33 @@ msgstr "Luchtvochtigheid"
 msgid "Rain"
 msgstr "Regen"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Neerslag"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Max/Min"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Temperatuurbereik"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "van"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "tot"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Zonsopgang / Zonsondergang"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Metriekvolgorde resetten"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "Lengtegraad"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Locatie zoeken..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Locatie zoeken"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Voer de naam van een stad of locatie in om de coördinaten te vinden"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,4 +356,16 @@ msgstr "Celsius"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "morning"
+msgstr "ochtend"
+
+msgid "afternoon"
+msgstr "middag"
+
+msgid "evening"
+msgstr "avond"
+
+msgid "night"
+msgstr "nacht"
 

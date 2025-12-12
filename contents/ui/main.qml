@@ -17,8 +17,17 @@ PlasmoidItem {
     Connections {
         target: weatherData
         function onDataChanged() {
-            temps = (temperatureUnit === "Celsius" ? weatherData.dailyWeatherMax[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMax[0])) + `° | ` + (temperatureUnit === "Celsius" ? weatherData.dailyWeatherMin[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMin[0]) )+ "°"
+            updateTemps()
         }
+    }
+    onTemperatureUnitChanged: {
+        updateTemps()
+    }
+    function updateTemps() {
+        temps = Math.round(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMax[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMax[0])) + `° | ` + Math.round(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMin[0] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMin[0]) )+ "°"
+    }
+    Component.onCompleted: {
+        updateTemps()
     }
 
     toolTipItem: ColumnLayout {
@@ -62,7 +71,7 @@ PlasmoidItem {
         height: sectionHeight + Kirigami.Units.gridUnit
         Layout.minimumWidth: sectionWidth + Kirigami.Units.gridUnit
         Layout.minimumHeight: sectionHeight + Kirigami.Units.gridUnit
-        Layout.maximumWidth: minimumWidth
-        Layout.maximumHeight: minimumHeight
+        Layout.maximumWidth: Layout.minimumWidth
+        Layout.maximumHeight: Layout.minimumHeight
     }
 }

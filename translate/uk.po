@@ -212,6 +212,9 @@ msgstr "Жирний шрифт"
 msgid "12-hour (AM/PM)"
 msgstr "12-годинний (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Показувати хвилини"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Одиниця виміру вітру:"
@@ -258,13 +261,33 @@ msgstr "Вологість"
 msgid "Rain"
 msgstr "Дощ"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Опади"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Макс/Мін"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Діапазон"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "від"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "до"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Схід / Захід сонця"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Скинути порядок метрик"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "Довгота"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Пошук місцезнаходження..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Пошук місцезнаходження"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Введіть назву міста або місцезнаходження для пошуку його координат"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,4 +356,16 @@ msgstr "Цельсій"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Фаренгейт"
+
+msgid "morning"
+msgstr "ранку"
+
+msgid "afternoon"
+msgstr "дня"
+
+msgid "evening"
+msgstr "вечора"
+
+msgid "night"
+msgstr "ночі"
 

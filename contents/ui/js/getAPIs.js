@@ -8,15 +8,13 @@ function obtenerDatosClimaticos(latitud, longitud, callback) {
             if (req.status === 200) {
                 let datos = JSON.parse(req.responseText);
                 callback(datos);
-                console.log("data obtained")
             } else {
-                console.error(`Error en la solicitud: weathergeneral ${req.status}`);
+                callback(null);
             }
         }
     };
 
     req.onerror = function () {
-        console.error("Error de la red.");
         callback(null); 
     };
 
@@ -39,23 +37,22 @@ function getNameCity(latitude, longitud, leng, callback) {
                     let county = address.county;
                     let state = address.state;
                     let full = city ? city : state ? state : county;
-                    console.log(full);
                     callback(full);
                 } catch (e) {
-                    console.error("Error al analizar la respuesta JSON: ", e);
+                    callback(null);
                 }
             } else {
-                console.error(`city failed`);
+                callback(null);
             }
         }
     };
 
     req.onerror = function () {
-        console.error("La solicitud falló");
+        callback(null);
     };
 
     req.ontimeout = function () {
-        console.error("La solicitud excedió el tiempo de espera");
+        callback(null);
     };
 
     req.send();
@@ -72,22 +69,18 @@ function obtenerCoordenadas(callback) {
             if (req.status === 200) {
                 try {
                     let datos = JSON.parse(req.responseText);
-                    console.log(`Coordenadas obtenidas:`);
-                    callback(datos); 
+                    callback(datos);
                 } catch (error) {
-                    console.error("Error procesando la respuesta JSON:", error);
-                    callback(null); 
+                    callback(null);
                 }
             } else {
-                console.error(`Error en la solicitud: ${req.status}`);
-                callback(null); 
+                callback(null);
             }
         }
     };
 
     req.onerror = function () {
-        console.error("Error de red al intentar obtener coordenadas.");
-        callback(null); 
+        callback(null);
     };
 
     req.send();

@@ -212,6 +212,9 @@ msgstr "Font Bold"
 msgid "12-hour (AM/PM)"
 msgstr "12-hour (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Show minutes"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Wind Unit:"
@@ -258,13 +261,33 @@ msgstr "Humidity"
 msgid "Rain"
 msgstr "Rain"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Precipitation"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Max/Min"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Temperature Range"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "from"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "to"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Sunrise / Sunset"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Reset Metrics Order"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "Longitude"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Search location..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Search for Location"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Enter the name of a city or location to find its coordinates"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,3 +356,15 @@ msgstr "Celsius"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "morning"
+msgstr "am"
+
+msgid "afternoon"
+msgstr "pm"
+
+msgid "evening"
+msgstr "pm"
+
+msgid "night"
+msgstr "am"

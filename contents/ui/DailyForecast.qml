@@ -1,10 +1,13 @@
 import QtQuick
+import QtQuick.Layouts
 import "lib" as Lib
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
 import "./js/fahrenheitFormatt.js" as FahrenheitFormatt
 
 Item {
 
+    property string temperatureUnit: Plasmoid.configuration.temperatureUnit
     property var iconsDaysForecast: []
     property var weatherMaxDaysForecast: []
     property var weatherMinDaysForecast: []
@@ -13,19 +16,28 @@ Item {
 
     Lib.Card {
         anchors.fill: parent
-        Row {
+        anchors.topMargin: Kirigami.Units.smallSpacing * 2
+        
+        GridLayout {
             anchors.fill: parent
-            spacing: 4
+            anchors.margins: Kirigami.Units.smallSpacing
+            columns: 5
+            rowSpacing: Kirigami.Units.smallSpacing
+            columnSpacing: Kirigami.Units.smallSpacing
+
             Repeater {
                 model: 5
-                delegate: Item {
-                    width: (parent.width - (parent.spacing * 4))/5
-                    height: parent.height
+                delegate: Rectangle {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, 0.1)
+                    radius: 4
+
                     Column {
-                        width: parent.width
-                        height: days.implicitHeight + icon.implicitHeight + max.implicitHeight + min.implicitHeight + rain.implicitHeight + spacing*3
                         anchors.centerIn: parent
-                        spacing: 12
+                        width: parent.width - Kirigami.Units.smallSpacing * 2
+                        spacing: Kirigami.Units.smallSpacing * 2
+
                         Kirigami.Heading {
                             id: days
                             width: parent.width
@@ -42,26 +54,26 @@ Item {
                         }
 
                         Item {
+                            id: tempItem
                             width: parent.width
-                            height: max.implicitHeight + min.implicitHeight + spacing
-
                             property int spacing: 4
+                            height: max.implicitHeight + min.implicitHeight + tempItem.spacing
 
                             Kirigami.Heading {
                                 id: max
                                 width: parent.width
                                 horizontalAlignment: Text.AlignHCenter
-                                text: weatherMaxDaysForecast[modelData +  1] === undefined ? "--" : weatherMaxDaysForecast[modelData +  1] + "°"
+                                text: weatherMaxDaysForecast[modelData +  1] === undefined ? "--" : Math.round(weatherMaxDaysForecast[modelData +  1]) + "°"
                                 level: 5
                             }
                             Kirigami.Heading {
                                 id: min
                                 width: parent.width
                                 anchors.top: max.bottom
-                                anchors.topMargin: spacing
+                                anchors.topMargin: tempItem.spacing
                                 opacity: 0.6
                                 horizontalAlignment: Text.AlignHCenter
-                                text: weatherMinDaysForecast[modelData +  1] === undefined ? "--" : weatherMinDaysForecast[modelData +  1] + "°"
+                                text: weatherMinDaysForecast[modelData +  1] === undefined ? "--" : Math.round(weatherMinDaysForecast[modelData +  1]) + "°"
                                 level: 5
                             }
                         }
@@ -70,20 +82,9 @@ Item {
                             id: rain
                             width: parent.width
                             horizontalAlignment: Text.AlignHCenter
-                            text: rainDaysForecast[modelData +  1] === undefined ? "--" : "💧" +  rainDaysForecast[modelData +  1]
+                            text: rainDaysForecast[modelData +  1] === undefined ? "--" : "💧" +  Math.round(rainDaysForecast[modelData +  1])
                             level: 5
                         }
-
-                    }
-                    Rectangle {
-                        anchors.right: parent.right
-                        anchors.rightMargin: -parent.parent.spacing / 2
-                        width: 1
-                        height: parent.height * 0.4
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: Kirigami.Theme.textColor
-                        opacity: 0.2
-                        visible: modelData < 4
                     }
                 }
             }
@@ -91,54 +92,45 @@ Item {
     }
 
 
-    Connections {
-        target: weatherData
-        function onDataChanged() {
-
-            var newArrayMaxDaysForecast = []
-            var newArrayMinDaysForecast = []
-
-            timesDaysForecast = weatherData.dailyTime.map(function(iso) {
-                var dateDayTime = new Date((iso + "T00:00:00"))
-                console.log(dateDayTime, iso)
-                return dateDayTime.toLocaleString(Qt.locale(), "ddd");
-            })
-
-            iconsDaysForecast = weatherData.iconsDailyWather
-
-            for (var e = 0; e < weatherData.dailyWeatherMax.length; e++) {
-                newArrayMaxDaysForecast.push(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMax[e] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMax[e]))
-
-                newArrayMinDaysForecast.push(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMin[e] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMin[e]))
-            }
-            weatherMaxDaysForecast = newArrayMaxDaysForecast
-            weatherMinDaysForecast = newArrayMinDaysForecast
-
-            rainDaysForecast = weatherData.dailyPrecipitationProbabilityMax
-        }
-    }
-
-
-    Component.onCompleted: {
+    function updateTemperatures() {
         var newArrayMaxDaysForecast = []
         var newArrayMinDaysForecast = []
 
-        timesDaysForecast = weatherData.dailyTime.map(function(iso) {
-            var dateDayTime = new Date((iso + "T00:00:00"))
-            console.log(dateDayTime, iso)
-            return dateDayTime.toLocaleString(Qt.locale(), "ddd");
-        })
-
-        iconsDaysForecast = weatherData.iconsDailyWather
-
         for (var e = 0; e < weatherData.dailyWeatherMax.length; e++) {
             newArrayMaxDaysForecast.push(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMax[e] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMax[e]))
-
             newArrayMinDaysForecast.push(temperatureUnit === "Celsius" ? weatherData.dailyWeatherMin[e] : FahrenheitFormatt.fahrenheit(weatherData.dailyWeatherMin[e]))
         }
         weatherMaxDaysForecast = newArrayMaxDaysForecast
         weatherMinDaysForecast = newArrayMinDaysForecast
+    }
 
+    Connections {
+        target: weatherData
+        function onDataChanged() {
+            timesDaysForecast = weatherData.dailyTime.map(function(iso) {
+                var dateDayTime = new Date((iso + "T00:00:00"))
+                return dateDayTime.toLocaleString(Qt.locale(), "ddd");
+            })
+
+            iconsDaysForecast = weatherData.iconsDailyWather
+            updateTemperatures()
+            rainDaysForecast = weatherData.dailyPrecipitationProbabilityMax
+        }
+    }
+
+    onTemperatureUnitChanged: {
+        updateTemperatures()
+    }
+
+
+    Component.onCompleted: {
+        timesDaysForecast = weatherData.dailyTime.map(function(iso) {
+            var dateDayTime = new Date((iso + "T00:00:00"))
+            return dateDayTime.toLocaleString(Qt.locale(), "ddd");
+        })
+
+        iconsDaysForecast = weatherData.iconsDailyWather
+        updateTemperatures()
         rainDaysForecast = weatherData.dailyPrecipitationProbabilityMax
     }
 }

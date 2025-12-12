@@ -212,6 +212,9 @@ msgstr "Czcionka pogrubiona"
 msgid "12-hour (AM/PM)"
 msgstr "12-godzinny (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Pokaż minuty"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Jednostka wiatru:"
@@ -258,13 +261,33 @@ msgstr "Wilgotność"
 msgid "Rain"
 msgstr "Deszcz"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Opady"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Maks/Min"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Zakres temperatury"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "od"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "do"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Wschód / Zachód słońca"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Resetuj kolejność metryk"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "Długość geograficzna"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Wyszukaj lokalizację..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Wyszukaj lokalizację"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Wpisz nazwę miasta lub lokalizacji, aby znaleźć jego współrzędne"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,4 +356,16 @@ msgstr "Celsjusz"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "morning"
+msgstr "rano"
+
+msgid "afternoon"
+msgstr "po południu"
+
+msgid "evening"
+msgstr "wieczorem"
+
+msgid "night"
+msgstr "w nocy"
 

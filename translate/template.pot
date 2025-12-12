@@ -273,3 +273,100 @@ msgstr ""
 #: ../contents/ui/WeatherConfig.qml
 msgid "Longitude"
 msgstr ""
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+msgid "UV"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Font Settings"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Display Options"
+msgstr ""
+
+#: ../contents/ui/ConfigGeneral.qml
+msgid "Time Format"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Location"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Units"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "km/h"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "mph"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "m/s"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Celsius"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Fahrenheit"
+msgstr ""
+
+#: ../contents/ui/WeatherConfig.qml
+#: ../contents/ui/Header.qml
+msgid "unknown"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "morning"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "afternoon"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "evening"
+msgstr ""
+
+#: ../contents/ui/MainView.qml
+#: ../contents/ui/HourlyForecast.qml
+msgid "night"
+msgstr ""
+
+#: ../contents/ui/FindCity.qml
+msgid "Search location..."
+msgstr ""
+
+#: ../contents/ui/FindCity.qml
+msgid "No locations found"
+msgstr ""

@@ -28,6 +28,8 @@ Item {
         ColumnLayout {
             width: scrollView.width
             spacing: Kirigami.Units.largeSpacing
+            Layout.topMargin: Kirigami.Units.smallSpacing
+            Layout.bottomMargin: Kirigami.Units.smallSpacing
 
         ColumnLayout {
             Layout.fillWidth: true
@@ -153,10 +155,6 @@ Item {
                 }
             }
         }
-
-            Item {
-                Layout.fillHeight: true
-            }
         }
     }
 }

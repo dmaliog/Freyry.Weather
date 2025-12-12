@@ -90,7 +90,7 @@ Item {
                     anchors.fill: parent
                     anchors.margins: 6
                     color: customColorbg
-                    visible: false
+                    visible: false    
                     radius: customRadius
                 }
 
@@ -135,8 +135,6 @@ Item {
             }
         }
     }
-
-
     Flow {
         width: parent.width + excessWidth
         height: parent.height + excessHeight

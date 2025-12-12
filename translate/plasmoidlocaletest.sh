@@ -1,4 +1,6 @@
 #!/bin/bash
+# Version 9
+# Requires plasmoidviewer v5.13.0
 
 function checkIfLangInstalled {
 	if [ -x "$(command -v dpkg)" ]; then
@@ -10,7 +12,11 @@ function checkIfLangInstalled {
 			; exit 1 \
 		)
 	elif [ -x "$(command -v pacman)" ]; then
+		# TODO: run `locale -a` and check if the locale is enabled.
 		if false; then
+			# https://wiki.archlinux.org/index.php/Locale
+			# Uncomment the locale in /etc/locale.gen
+			# Then run `locale-gen`
 			echo -e "\nPlease install this locale in System Settings first.\n"
 			exit 1
 		else
@@ -25,12 +31,13 @@ langInput="${1}"
 lang=""
 languagePack=""
 
-if [[ "$langInput" =~ ":" ]]; then
+if [[ "$langInput" =~ ":" ]]; then # String contains a colon so assume it's a locale code.
 	lang="${langInput}"
 	IFS=: read -r l1 l2 <<< "${lang}"
 	languagePack="language-pack-${l2}"
 fi
 
+# https://stackoverflow.com/questions/3191664/list-of-all-locales-and-their-short-codes/28357857#28357857
 declare -a langArr=(
 	"af_ZA:af:Afrikaans (South Africa)"
 	"ak_GH:ak:Akan (Ghana)"
@@ -153,6 +160,7 @@ fi
 IFS=: read -r l1 l2 <<< "${lang}"
 l1="${l1}.UTF-8"
 
+# Check if language is installed
 if [ ! -z "$languagePack" ]; then
 	if [ "$lang" == "zh_CN:zh" ]; then languagePack="language-pack-zh-hans"
 	fi
@@ -167,6 +175,7 @@ echo "LANG=\"${l1}\""
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 packageDir="${scriptDir}/.."
 
+# Build local translations for plasmoidviewer
 sh "${scriptDir}/build"
 
 LANGUAGE="${lang}" LANG="${l1}" LC_TIME="${l1}" QML_DISABLE_DISK_CACHE=true plasmoidviewer -a "$packageDir" -l topedge -f horizontal -x 0 -y 0

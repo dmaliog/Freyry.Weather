@@ -212,6 +212,9 @@ msgstr "Kalın Yazı Tipi"
 msgid "12-hour (AM/PM)"
 msgstr "12 saatlik (AM/PM)"
 
+msgid "Show minutes"
+msgstr "Dakikaları göster"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Wind Unit:"
 msgstr "Rüzgar Birimi:"
@@ -258,13 +261,33 @@ msgstr "Nem"
 msgid "Rain"
 msgstr "Yağmur"
 
+#: ../contents/ui/MainView.qml
+msgid "Precipitation"
+msgstr "Yağış"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Max/Min"
 msgstr "Maks/Min"
 
+#: ../contents/ui/MainView.qml
+msgid "Temperature Range"
+msgstr "Sıcaklık Aralığı"
+
+#: ../contents/ui/MainView.qml
+msgid "from"
+msgstr "den"
+
+#: ../contents/ui/MainView.qml
+msgid "to"
+msgstr "e"
+
 #: ../contents/ui/WeatherConfig.qml
 msgid "Sunrise / Sunset"
 msgstr "Gün Doğumu / Gün Batımı"
+
+#: ../contents/ui/WeatherConfig.qml
+msgid "Reset Metrics Order"
+msgstr "Metrik sırasını sıfırla"
 
 #: ../contents/ui/WeatherConfig.qml
 msgid "Cloud Cover"
@@ -289,14 +312,6 @@ msgstr "Boylam"
 #: ../contents/ui/FindCity.qml
 msgid "Search location..."
 msgstr "Konum ara..."
-
-#: ../contents/ui/FindCity.qml
-msgid "Search for Location"
-msgstr "Konum Ara"
-
-#: ../contents/ui/FindCity.qml
-msgid "Enter the name of a city or location to find its coordinates"
-msgstr "Koordinatlarını bulmak için bir şehir veya konum adı girin"
 
 #: ../contents/ui/FindCity.qml
 msgid "No locations found"
@@ -341,4 +356,16 @@ msgstr "Celsius"
 #: ../contents/ui/WeatherConfig.qml
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
+
+msgid "morning"
+msgstr "sabah"
+
+msgid "afternoon"
+msgstr "öğleden sonra"
+
+msgid "evening"
+msgstr "akşam"
+
+msgid "night"
+msgstr "gece"
 

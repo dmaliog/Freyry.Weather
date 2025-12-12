@@ -8,7 +8,18 @@
         ],
         "Name": "Freyry",
         "Id": "Freyry.Weather",
-        "Description": "compact weather widget",
+        "Description": "Compact weather widget",
+        "Description[de]": "Kompaktes Wetter-Widget",
+        "Description[es]": "Widget meteorológico compacto",
+        "Description[fr]": "Widget météo compact",
+        "Description[ko]": "컴팩트 날씨 위젯",
+        "Description[nl]": "Compact weerwidget",
+        "Description[pl]": "Kompaktowy widget pogodowy",
+        "Description[pt_BR]": "Widget meteorológico compacto",
+        "Description[ru]": "Компактный виджет погоды",
+        "Description[tr]": "Kompakt hava durumu widget'ı",
+        "Description[uk]": "Компактний віджет погоди",
+        "Description[zh_CN]": "紧凑天气小组件",
         "Category": "Utilities",
         "Icon": "weather",
         "EnabledByDefault": true,
@@ -16,7 +27,7 @@
         "ServiceTypes": [
             "Plasma/Applet"
         ],
-        "Version": "0.2.7",
+        "Version": "0.2.8",
         "Website": "https://github.com/zayronxio/Freyry.Weather/"
     },
     "X-Plasma-API-Minimum-Version": "6.0",

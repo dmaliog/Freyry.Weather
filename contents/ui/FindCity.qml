@@ -115,14 +115,12 @@ Kirigami.Dialog {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText)
                     resultsModel.clear()
-                    console.log("Found features:", data.features.length)
                     for (var i = 0; i < data.features.length; i++) {
                         var feature = data.features[i]
                         var city = feature.properties.city || ""
                         var textUbication = feature.properties.city || feature.properties.county || feature.properties.state || feature.properties.name
                         var country = feature.properties.country || ""
                         var displayName = feature.properties.name + (city ? ", " + city : "") + (country ? ", " + country : "")
-                        console.log("Adding result:", displayName)
                         resultsModel.append({
                             display_name: displayName,
                             lat: feature.geometry.coordinates[1],
@@ -132,8 +130,6 @@ Kirigami.Dialog {
                     }
                     resultsView.height = Math.min(resultsModel.count * Kirigami.Units.gridUnit*2.5, Kirigami.Units.gridUnit*16)
                     dialog.height = resultsView.height + searchField.implicitHeight + 30
-                } else {
-                    console.log("Error al consultar la API:", xhr.status)
                 }
             }
         }
