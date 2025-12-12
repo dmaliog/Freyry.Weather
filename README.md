@@ -7,7 +7,7 @@
 **ApexOS Weather** is a fork of **Freyry.Weather**, a compact weather widget for KDE Plasma.
 
 This fork includes various improvements and customizations:
-- **Enhanced card styling** — completely redesigned cards with viewitem theme integration for consistent appearance
+- **Enhanced card styling** — completely redesigned cards with theme integration for consistent appearance
 - **Bug fixes and improvements** — fixed all errors, warnings, and configuration issues
 - **Multi-language support** — translated to multiple languages (English, Russian, German, Spanish, French, Korean, Dutch, Polish, Portuguese, Turkish, Ukrainian, Chinese)
 - **Design improvements** — enhanced UI/UX with better visual consistency
