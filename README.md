@@ -47,19 +47,6 @@ Then restart Plasma or run:
 kbuildsycoca5
 killall plasmashell; kstart5 plasmashell
 ```
-
-## 📝 Fork Modifications
-
-This fork maintains compatibility with the original project while adding significant improvements:
-
-- **Redesigned cards** — completely new card system with viewitem theme integration
-- **Bug fixes** — fixed all errors, warnings, and configuration issues
-- **Multi-language support** — added translations for 12+ languages
-- **Design improvements** — enhanced UI/UX with better visual consistency
-- **Code cleanup** — removed unnecessary comments and improved code quality
-- **Better responsive layout** — improved layout responsiveness
-- **Improved visual consistency** — better visual consistency across all elements
-
 All modifications are made available under the same GPL-3.0-or-later license as the original project.
 
 ## Original Project
