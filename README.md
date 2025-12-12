@@ -15,7 +15,7 @@ This fork includes various improvements and customizations:
 **Original Project:** Freyry.Weather  
 **Original Author:** zayronxio (adolfo@librepixels.com)  
 **Original Repository:** https://github.com/zayronxio/Freyry.Weather/  
-**Project Website:** https://apexos.ru/  
+**Project Website:** [https://apexos.ru/  ](https://github.com/zayronxio/Freyry.Weather)
 **Original License:** GPL-3.0+
 
 ## License
